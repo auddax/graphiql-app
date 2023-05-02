@@ -1,2 +1,1 @@
 # graphiql-app
- 
