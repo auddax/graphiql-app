@@ -1,5 +1,5 @@
 import React from 'react';
-import './AuthPage.module.scss';
+import styles from './AuthPage.module.scss';
 
 const AuthPage = () => {
   return (

@@ -1,9 +1,32 @@
-import React from 'react';
-import './MainPage.module.scss';
+import React, { useState } from 'react';
+import { Button, Layout } from 'antd';
+import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import styles from './MainPage.module.scss';
 
-const MainPage = () => {
+const { Header, Footer, Sider, Content } = Layout;
+
+const MainPage: React.FC = () => {
+  const [collapsed, setCollapsed] = useState(true);
+
   return (
-    <div>Main Page</div>
+    <Layout className={styles['main-page']}>
+      <Header></Header>
+      <Layout>
+        <Sider 
+          trigger={null}
+          theme='light'
+          collapsible
+          collapsed={collapsed}
+          width={500}
+        >
+        <Button onClick={() => setCollapsed(!collapsed)}>
+          {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+        </Button>
+        </Sider>
+        <Content className={styles['page-content']}></Content>
+      </Layout>
+      <Footer></Footer>
+    </Layout>
   );
 };
 

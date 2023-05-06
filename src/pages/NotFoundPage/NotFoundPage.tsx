@@ -1,5 +1,5 @@
 import React from 'react';
-import './NotFoundPage.module.scss';
+import styles from './NotFoundPage.module.scss';
 
 const NotFoundPage = () => {
   return (
