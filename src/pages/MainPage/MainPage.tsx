@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Layout } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import styles from './MainPage.module.scss';
+import CodePlayground from '../../components/CodePlayground';
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -23,7 +24,9 @@ const MainPage: React.FC = () => {
           {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </Button>
         </Sider>
-        <Content className={styles['page-content']}></Content>
+        <Content className={styles['page-content']}>
+          <CodePlayground />
+        </Content>
       </Layout>
       <Footer></Footer>
     </Layout>
