@@ -11,24 +11,20 @@ const MainPage: React.FC = () => {
 
   return (
     <Layout className={styles['main-page']}>
-      <Header></Header>
-      <Layout>
-        <Sider 
-          trigger={null}
-          theme='light'
-          collapsible
-          collapsed={collapsed}
-          width={500}
-        >
-        <Button onClick={() => setCollapsed(!collapsed)}>
-          {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-        </Button>
-        </Sider>
-        <Content className={styles['page-content']}>
-          <CodePlayground />
-        </Content>
-      </Layout>
-      <Footer></Footer>
+      <Sider 
+        trigger={null}
+        theme='light'
+        collapsible
+        collapsed={collapsed}
+        width={500}
+      >
+      <Button onClick={() => setCollapsed(!collapsed)}>
+        {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+      </Button>
+      </Sider>
+      <Content className={styles['page-content']}>
+        <CodePlayground />
+      </Content>
     </Layout>
   );
 };
