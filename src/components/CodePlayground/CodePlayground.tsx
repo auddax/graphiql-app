@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './CodePlayground.module.scss';
 import Layout from 'antd/es/layout/layout';
 import { Col } from 'antd';
+import CodeEditor from '../CodeEditor';
 
 const CodePlayground = () => {
   return (
     <Layout>
-      <Col></Col>
+      <Col>
+        <CodeEditor />
+      </Col>
       <Col></Col>
     </Layout>
   );
