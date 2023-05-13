@@ -1,17 +1,19 @@
 import React, { useContext } from 'react';
 import styles from './CodePlayground.module.scss';
-import Layout from 'antd/es/layout/layout';
-import { Col } from 'antd';
+import { Col, Row } from 'antd';
 import CodeEditor from '../CodeEditor';
+import ResponseViewer from '../ResponseViewer';
 
 const CodePlayground = () => {
   return (
-    <Layout>
-      <Col>
+    <Row className={styles['code-playground']} gutter={[8, 8]}>
+      <Col className={styles['code-editor']} sm={24} lg={12}>
         <CodeEditor />
       </Col>
-      <Col></Col>
-    </Layout>
+      <Col sm={24} lg={12}>
+        <ResponseViewer />
+      </Col>
+    </Row>
   );
 };
 
