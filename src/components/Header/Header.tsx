@@ -7,7 +7,7 @@ const Header = () => {
     <div className={styles['header']}>
       <div className={styles['header-content']}>
         Header
-      <BtnAccount />
+      <BtnAccount showBtn='All' />
       </div>
     </div>
   );
