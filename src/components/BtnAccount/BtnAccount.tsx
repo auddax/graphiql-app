@@ -1,26 +1,43 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './BtnAccount.module.scss';
-import { Button, message } from 'antd';
+import { Button } from 'antd';
+import { NavLink } from 'react-router-dom';
+import { StoreContext } from '../../store/StoreProvider';
+import { observer } from 'mobx-react-lite';
 
-const BtnAccount = () => {
-  const [messageApi, contextHolder] = message.useMessage();
-  const success = () => {
-    messageApi.open({
-      type: 'success',
-      content: 'This is a success message',
-      duration: 3,
-    });
-  };
+const BtnAccount = observer((props: { showBtn: string }) => {
+  const store = useContext(StoreContext);
+  const [show, setShow] = useState(props.showBtn);
+
   return (
     <>
-      {contextHolder}
       <div className={styles['btn-account-container']}>
-        <Button type="primary" onClick={success}>
-          Зарегестрироваться / Войти
-        </Button>
+        {store.authStore.login ? (
+          <Button
+            type="primary"
+            onClick={() => {
+              store.authStore.logOutUser();
+            }}
+          >
+            Выйти
+          </Button>
+        ) : (
+          <>
+            {show === 'All' || show === 'Login' ? (
+              <NavLink to="/auth/login">
+                <Button type="primary">Войти</Button>
+              </NavLink>
+            ) : null}
+            {show === 'SignUp' || show === 'All' ? (
+              <NavLink to="/auth/signup">
+                <Button type="primary">Зарегестрироваться</Button>
+              </NavLink>
+            ) : null}
+          </>
+        )}
       </div>
     </>
   );
-};
+});
 
 export default BtnAccount;
