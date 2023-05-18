@@ -4,6 +4,8 @@ import RootStoreModel from './rootStore';
 
 class EditorStore {
   rootStore: RootStoreModel;
+  isLoading: boolean;
+  isError: boolean;
   queryValue: string | undefined;
   variablesValue: string | undefined;
   headersValue: string | undefined;
@@ -12,12 +14,16 @@ class EditorStore {
   constructor(rootStore: RootStoreModel) {
     this.rootStore = rootStore;
     makeAutoObservable(this);
+    this.isLoading = false;
+    this.isError = false;
     this.queryValue = localStorage.getItem('query') || undefined;
     this.variablesValue = localStorage.getItem('variables')  || undefined;
     this.headersValue = localStorage.getItem('headers') || '{ "Content-Type": "application/json" }';
   }
 
   sendRequest() {
+    this.isLoading = true;
+    this.isError = false;
     axios.post(
       'https://rickandmortyapi.com/graphql',
       {
@@ -28,9 +34,16 @@ class EditorStore {
         headers: JSON.parse(this.headersValue || '{}'),
       }
     ).then(result => {
+        runInAction(() => {
+          this.responseData = result.data;
+          this.isLoading = false;
+        });
+      }
+    ).catch(error => {
       runInAction(() => {
-        this.responseData = result.data;
-      });
+        this.isError = true;
+        this.isLoading = false;
+      })
     });
   }
 

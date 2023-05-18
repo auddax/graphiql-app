@@ -1,4 +1,8 @@
 .response-viewer {
   height: 80vh;
   overflow: auto;
+
+  .viewer-spinner {
+    height: 100%;
+  }
 }

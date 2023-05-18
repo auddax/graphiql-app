@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Editor } from '@monaco-editor/react';
-import styles from './CodeEditor.module.scss';
 import { StoreContext } from '../../store/StoreProvider';
 import { Button, Col, Row } from 'antd';
 import { PlaySquareOutlined } from '@ant-design/icons';
 import { observer } from 'mobx-react-lite';
 import ParamsEditor from '../ParamsEditor';
+import styles from './CodeEditor.module.scss';
 
 const CodeEditor: React.FC = () => {  
   const store = useContext(StoreContext);
