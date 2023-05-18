@@ -1,13 +1,12 @@
-import EditorStore from "./editorStore";
 import SchemaStore from "./schemaStore";
 import AuthStore from "./authStore";
+import EditorStore from "./editorStore";
 
 class RootStore {
   schemaStore: SchemaStore;
-  editorStore: EditorStore;
   authStore: AuthStore;
+  editorStore: EditorStore;
 
-  
   constructor() {
     this.schemaStore = new SchemaStore(this);
     this.authStore = new AuthStore(this);
