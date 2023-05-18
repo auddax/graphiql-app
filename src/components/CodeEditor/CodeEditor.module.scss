@@ -1,7 +1,16 @@
-.row {
-  height: 100%;
+.row-code-editor {
+  height: 70%;
 
-  .col {
+  .col-code-editor {
+    height: 100%;
+    background-color: #fff;
+  }
+}
+
+.row-params-editor {
+  height: 30%;
+
+  .col-params-editor {
     height: 100%;
     background-color: #fff;
   }
