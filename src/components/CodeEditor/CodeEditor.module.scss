@@ -1,17 +1,21 @@
-.row-code-editor {
-  height: 70%;
+.code-editor {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
 
-  .col-code-editor {
-    height: 100%;
-    background-color: #fff;
+  .row-code-editor {
+    height: 55vh;
+
+    .col-code-editor {
+      background-color: #fff;
+    }
   }
-}
-
-.row-params-editor {
-  height: 30%;
-
-  .col-params-editor {
-    height: 100%;
-    background-color: #fff;
+  
+  .row-params-editor {
+  
+    .col-params-editor {
+      background-color: #fff;
+    }
   }
 }

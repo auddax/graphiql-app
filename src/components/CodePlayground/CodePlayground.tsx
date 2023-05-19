@@ -6,7 +6,7 @@ import ResponseViewer from '../ResponseViewer';
 
 const CodePlayground = () => {
   return (
-    <Row className={styles['code-playground']} gutter={[8, 8]}>
+    <Row className={styles['code-playground']}>
       <Col className={styles['code-editor']} sm={24} lg={12}>
         <CodeEditor />
       </Col>

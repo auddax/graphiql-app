@@ -19,7 +19,7 @@ const CodeEditor: React.FC = () => {
   }
 
   return (
-    <>
+    <div className={styles['code-editor']}>
       <Row className={styles['row-code-editor']}>
         <Col className={styles['col-code-editor']} sm={22}>
           <Editor 
@@ -30,6 +30,7 @@ const CodeEditor: React.FC = () => {
             className={styles['editor']}
             options={{ 
               minimap: { enabled: false },
+              scrollBeyondLastLine: false,
               renderLineHighlight: "none",
               scrollbar: { 
                 verticalScrollbarSize: 0,
@@ -38,8 +39,8 @@ const CodeEditor: React.FC = () => {
           />
         </Col>
         <Col className={styles['col-code-editor']} sm={2}>
-          <Button onClick={handleRequest}>
-            <PlaySquareOutlined />
+          <Button type="text" onClick={handleRequest}>
+            <PlaySquareOutlined height={36} width={36} />
           </Button>
         </Col>
       </Row>
@@ -48,7 +49,7 @@ const CodeEditor: React.FC = () => {
           <ParamsEditor />
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 
