@@ -1,8 +1,11 @@
 .code-editor {
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background-color: #fff;
+  padding: 1.25rem 0.5rem;
+  border-radius: 1.25rem;
 
   .row-code-editor {
     height: 55vh;
