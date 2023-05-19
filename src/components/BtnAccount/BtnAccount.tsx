@@ -30,7 +30,7 @@ const BtnAccount = observer((props: { showBtn: string }) => {
             ) : null}
             {show === 'SignUp' || show === 'All' ? (
               <NavLink to="/auth/signup">
-                <Button type="primary">Зарегестрироваться</Button>
+                <Button type="primary">Зарегистрироваться</Button>
               </NavLink>
             ) : null}
           </>

@@ -4,40 +4,62 @@ import RootStoreModel from './rootStore';
 
 class EditorStore {
   rootStore: RootStoreModel;
+  isLoading: boolean;
+  isError: boolean;
   queryValue: string | undefined;
-  queryVariables: string | undefined;
-  headers: object | undefined;
+  variablesValue: string | undefined;
+  headersValue: string | undefined;
   responseData: object | undefined;
 
   constructor(rootStore: RootStoreModel) {
     this.rootStore = rootStore;
     makeAutoObservable(this);
-    this.queryValue = localStorage.getItem('query') || '';
-    this.headers = {
-      'Content-Type': 'application/json',
-    }
+    this.isLoading = false;
+    this.isError = false;
+    this.queryValue = localStorage.getItem('query') || undefined;
+    this.variablesValue = localStorage.getItem('variables')  || undefined;
+    this.headersValue = localStorage.getItem('headers') || '{ "Content-Type": "application/json" }';
   }
 
   sendRequest() {
+    this.isLoading = true;
+    this.isError = false;
     axios.post(
       'https://rickandmortyapi.com/graphql',
       {
         query: this.queryValue,
-        variables: this.queryVariables,
+        variables: JSON.parse(this.variablesValue || '{}'),
       },
       {
-        headers: this.headers,
+        headers: JSON.parse(this.headersValue || '{}'),
       }
     ).then(result => {
+        runInAction(() => {
+          this.responseData = result.data;
+          this.isLoading = false;
+        });
+      }
+    ).catch(error => {
       runInAction(() => {
-        this.responseData = result.data;
-      });
+        this.isError = true;
+        this.isLoading = false;
+      })
     });
   }
 
   setQueryValue(queryValue: string | undefined) {
     this.queryValue = queryValue;
     if (this.queryValue) localStorage.setItem('query', this.queryValue);
+  }
+
+  setVariablesValue(variablesValue: string | undefined) {
+    this.variablesValue = variablesValue;
+    if (this.variablesValue) localStorage.setItem('variables', this.variablesValue);
+  }
+
+  setHeadersValue(headersValue: string | undefined) {
+    this.headersValue = headersValue;
+    if (this.headersValue) localStorage.setItem('headers', this.headersValue);
   }
 }
 

@@ -4,7 +4,7 @@ import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import styles from './MainPage.module.scss';
 import CodePlayground from '../../components/CodePlayground';
 
-const { Header, Footer, Sider, Content } = Layout;
+const { Sider, Content } = Layout;
 
 const MainPage: React.FC = () => {
   const [collapsed, setCollapsed] = useState(true);

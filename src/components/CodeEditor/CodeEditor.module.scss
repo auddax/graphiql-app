@@ -1,8 +1,24 @@
-.row {
-  height: 100%;
+.code-editor {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 1.25rem 0.5rem;
+  border-radius: 1.25rem;
 
-  .col {
-    height: 100%;
-    background-color: #fff;
+  .row-code-editor {
+    height: 55vh;
+
+    .col-code-editor {
+      background-color: #fff;
+    }
+  }
+  
+  .row-params-editor {
+  
+    .col-params-editor {
+      background-color: #fff;
+    }
   }
 }
