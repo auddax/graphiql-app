@@ -4,20 +4,15 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: #fff;
-  padding: 1.25rem 0.5rem;
+  padding: 1.25rem 0.5rem 0 0.5rem;
   border-radius: 1.25rem;
 
   .row-code-editor {
     height: 55vh;
 
     .col-code-editor {
-      background-color: #fff;
-    }
-  }
-  
-  .row-params-editor {
-  
-    .col-params-editor {
+      display: flex;
+      justify-content: right;
       background-color: #fff;
     }
   }

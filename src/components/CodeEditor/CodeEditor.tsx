@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Editor } from '@monaco-editor/react';
 import { StoreContext } from '../../store/StoreProvider';
 import { Button, Col, Row } from 'antd';
-import { PlaySquareOutlined } from '@ant-design/icons';
+import { CaretRightOutlined, PlaySquareOutlined } from '@ant-design/icons';
 import { observer } from 'mobx-react-lite';
 import ParamsEditor from '../ParamsEditor';
 import styles from './CodeEditor.module.scss';
@@ -21,7 +21,7 @@ const CodeEditor: React.FC = () => {
   return (
     <div className={styles['code-editor']}>
       <Row className={styles['row-code-editor']}>
-        <Col className={styles['col-code-editor']} sm={22}>
+        <Col className={styles['col-code-editor']} sm={20}>
           <Editor 
             height="100%"
             language="graphql"
@@ -38,10 +38,13 @@ const CodeEditor: React.FC = () => {
             }}
           />
         </Col>
-        <Col className={styles['col-code-editor']} sm={2}>
-          <Button type="text" onClick={handleRequest}>
-            <PlaySquareOutlined height={36} width={36} />
-          </Button>
+        <Col className={styles['col-code-editor']} sm={4}>
+          <Button 
+            type="primary" 
+            onClick={handleRequest} 
+            size="large"
+            icon={<CaretRightOutlined />} 
+          />
         </Col>
       </Row>
       <Row className={styles['row-params-editor']}>

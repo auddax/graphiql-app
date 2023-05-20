@@ -55,9 +55,11 @@ const ParamsEditor = () => {
       <Row className={styles['params-editor-menu']}>
         <Button type="text" id="variables" onClick={handleModeButton}>Variables</Button>
         <Button type="text" id="headers" onClick={handleModeButton}>Headers</Button>
-        <Button type="text" onClick={() => setCollapsed(!collapsed)} className={styles['menu-toggle-button']}>
-          {collapsed ? <DownOutlined /> : <UpOutlined />}
-        </Button>
+        <Button type="text" 
+          onClick={() => setCollapsed(!collapsed)} 
+          className={styles['menu-toggle-button']} 
+          icon={collapsed ? <DownOutlined /> : <UpOutlined />} 
+        />
       </Row>
       {!collapsed && (
         <Row className={styles['params-editor']}>
