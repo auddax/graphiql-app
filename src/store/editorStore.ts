@@ -1,5 +1,6 @@
 import { makeAutoObservable, runInAction, toJS } from 'mobx';
 import axios from 'axios';
+import config from '../../config.json';
 import RootStoreModel from './rootStore';
 
 class EditorStore {
@@ -25,7 +26,7 @@ class EditorStore {
     this.isLoading = true;
     this.isError = false;
     axios.post(
-      'https://rickandmortyapi.com/graphql',
+      config.api.baseUrl,
       {
         query: this.queryValue,
         variables: JSON.parse(this.variablesValue || '{}'),

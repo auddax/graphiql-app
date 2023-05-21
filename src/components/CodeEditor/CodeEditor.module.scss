@@ -4,21 +4,23 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: #fff;
-  padding: 1.25rem 0.5rem;
+  padding: 1.25rem 0.5rem 0.5rem 0.5rem;
   border-radius: 1.25rem;
 
   .row-code-editor {
-    height: 55vh;
+    height: 100%;
 
     .col-code-editor {
+      display: flex;
+      justify-content: right;
       background-color: #fff;
     }
   }
-  
   .row-params-editor {
-  
-    .col-params-editor {
-      background-color: #fff;
-    }
+    position: absolute;
+    bottom: 0.5rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 10;
   }
 }

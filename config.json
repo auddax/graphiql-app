@@ -1,0 +1,15 @@
+{
+  "api": {
+    "baseUrl": "https://rickandmortyapi.com/graphql"
+  },
+  "monacoEditor": {
+    "options": {
+      "minimap": { "enabled": false },
+      "scrollBeyondLastLine": false,
+      "renderLineHighlight": "none",
+      "scrollbar": { 
+        "verticalScrollbarSize": 0
+      }
+    }
+  }
+}

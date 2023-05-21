@@ -1,9 +1,11 @@
 import React, { useContext, useState } from 'react';
+import { editor } from 'monaco-editor';
 import { Editor } from '@monaco-editor/react';
 import { Button, Row } from 'antd';
 import { DownOutlined, UpOutlined } from '@ant-design/icons';
 import { StoreContext } from '../../store/StoreProvider';
 import { observer } from 'mobx-react-lite';
+import config from '../../../config.json'
 import styles from './ParamsEditor.module.scss';
 
 interface IPaths {
@@ -18,6 +20,7 @@ const ParamsEditor = () => {
   const store = useContext(StoreContext);
   const [mode, setMode] = useState('variables');
   const [collapsed, setCollapsed] = useState(true);
+  const options = config.monacoEditor.options as editor.IStandaloneEditorConstructionOptions;
 
   const paths: IPaths = {
     headers: {
@@ -55,9 +58,11 @@ const ParamsEditor = () => {
       <Row className={styles['params-editor-menu']}>
         <Button type="text" id="variables" onClick={handleModeButton}>Variables</Button>
         <Button type="text" id="headers" onClick={handleModeButton}>Headers</Button>
-        <Button type="text" onClick={() => setCollapsed(!collapsed)} className={styles['menu-toggle-button']}>
-          {collapsed ? <DownOutlined /> : <UpOutlined />}
-        </Button>
+        <Button type="text" 
+          onClick={() => setCollapsed(!collapsed)} 
+          className={styles['menu-toggle-button']} 
+          icon={collapsed ? <DownOutlined /> : <UpOutlined />} 
+        />
       </Row>
       {!collapsed && (
         <Row className={styles['params-editor']}>
@@ -68,14 +73,7 @@ const ParamsEditor = () => {
             value={paths[mode].value}
             path={paths[mode].name}
             className={styles['editor']}
-            options={{ 
-              minimap: { enabled: false },
-              scrollBeyondLastLine: false,
-              renderLineHighlight: "none",
-              scrollbar: { 
-                verticalScrollbarSize: 0,
-              }
-            }}
+            options={options}
           />
         </Row>
       )}
