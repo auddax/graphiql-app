@@ -1,12 +1,12 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID
+  apiKey: "AIzaSyCn9n493N6CzcchCuntDfNH4Q1IXxFgVas",
+  authDomain: "auth-react-graphiql.firebaseapp.com",
+  projectId: "auth-react-graphiql",
+  storageBucket: "auth-react-graphiql.appspot.com",
+  messagingSenderId: "478523258334",
+  appId: "1:478523258334:web:93d62f3b4cc86708f2994f"
 };
 
 const app = initializeApp(firebaseConfig);
