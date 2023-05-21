@@ -5,6 +5,7 @@ import { Button, Checkbox, Form, Input } from 'antd';
 import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { UserDataReg } from '../../types';
+import { useNavigate } from 'react-router-dom';
 
 const tailFormItemLayout = {
   wrapperCol: {
@@ -21,9 +22,10 @@ const tailFormItemLayout = {
 
 type LayoutType = Parameters<typeof Form>[0]['layout'];
 
-const SignUp = observer(() => {
+const SignUp = () => {
   const store = useContext(StoreContext);
   const [form] = Form.useForm();
+  const navigate = useNavigate();
   const [formLayout, setFormLayout] = useState<LayoutType>('vertical');
 
   useEffect(() => {
@@ -34,7 +36,11 @@ const SignUp = observer(() => {
   const onFinish = (values: UserDataReg) => {
     console.log('Received values', values);
 
-    store.authStore.setUser(values);
+    store.authStore.setUser(values).then((success) => {
+      if (success) {
+        navigate('/auth/login');
+      }
+    });
   };
 
   const formItemLayout =
@@ -142,6 +148,6 @@ const SignUp = observer(() => {
       </div>
     </>
   );
-});
+};
 
-export default SignUp;
+export default observer(SignUp);

@@ -5,27 +5,19 @@ import LogIn from '../../components/LogIn/LogIn';
 import SignUp from '../../components/SignUp/SignUp';
 import { Button } from 'antd';
 import { StoreContext } from '../../store/StoreProvider';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 
-const AuthPage = observer((props: { loginPage: boolean }) => {
+const AuthPage = () => {
   const store = useContext(StoreContext);
+  const { page } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (store.authStore.login) navigate('/');
-    return;
-  }, []);
-
-  useEffect(() => {
-    if (store.authStore.login)
-      setTimeout(() => {
-        navigate('/main');
-      }, 100);
-  }, [store.authStore.login]);
-
-  useEffect(() => {
-    store.authStore.toggleLoginPage(props.loginPage);
-  }, [props.loginPage]);
+    if (page === 'login' || page === 'signup') {
+      return store.authStore.toggleLoginPage(page === 'login' ? true : false);
+    }
+    return navigate('/404');
+  }, [page]);
 
   return (
     <>
@@ -91,6 +83,6 @@ const AuthPage = observer((props: { loginPage: boolean }) => {
       </div>
     </>
   );
-});
+};
 
-export default AuthPage;
+export default observer(AuthPage);
