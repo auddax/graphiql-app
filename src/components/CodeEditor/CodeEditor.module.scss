@@ -1,8 +1,26 @@
-.row {
-  height: 100%;
+.code-editor {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 1.25rem 0.5rem 0.5rem 0.5rem;
+  border-radius: 1.25rem;
 
-  .col {
+  .row-code-editor {
     height: 100%;
-    background-color: #fff;
+
+    .col-code-editor {
+      display: flex;
+      justify-content: right;
+      background-color: #fff;
+    }
+  }
+  .row-params-editor {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 10;
   }
 }

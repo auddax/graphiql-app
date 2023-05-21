@@ -1,7 +1,10 @@
 .code-playground {
-  height: 100%;
 
-  .code-editor {
-    height: 100%;
+  .playground-editor {
+    display: flex;
+    padding: 0.5rem;
+  }
+  .playground-viewer {
+    padding: 0.5rem;
   }
 }
