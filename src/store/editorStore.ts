@@ -1,12 +1,15 @@
-import { makeAutoObservable, runInAction, toJS } from 'mobx';
+import { makeAutoObservable, runInAction } from 'mobx';
 import axios from 'axios';
 import config from '../../config.json';
 import RootStoreModel from './rootStore';
+
+const { query, variables, headers } = config.api.placeholders;
 
 class EditorStore {
   rootStore: RootStoreModel;
   isLoading: boolean;
   isError: boolean;
+  errorMessage: string | undefined;
   queryValue: string | undefined;
   variablesValue: string | undefined;
   headersValue: string | undefined;
@@ -17,14 +20,16 @@ class EditorStore {
     makeAutoObservable(this);
     this.isLoading = false;
     this.isError = false;
-    this.queryValue = localStorage.getItem('query') || undefined;
-    this.variablesValue = localStorage.getItem('variables')  || undefined;
-    this.headersValue = localStorage.getItem('headers') || '{ "Content-Type": "application/json" }';
+    this.queryValue = localStorage.getItem('query') || query;
+    this.variablesValue = localStorage.getItem('variables')  || variables;
+    this.headersValue = localStorage.getItem('headers') || headers;
   }
 
   sendRequest() {
     this.isLoading = true;
     this.isError = false;
+    this.errorMessage = '';
+
     axios.post(
       config.api.baseUrl,
       {
@@ -42,9 +47,11 @@ class EditorStore {
       }
     ).catch(error => {
       runInAction(() => {
+        this.responseData = error.response.data;
         this.isError = true;
-        this.isLoading = false;
-      })
+        this.errorMessage = error.message;
+        this.isLoading = false;  
+      });
     });
   }
 

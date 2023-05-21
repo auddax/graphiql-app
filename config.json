@@ -1,6 +1,11 @@
 {
   "api": {
-    "baseUrl": "https://rickandmortyapi.com/graphql"
+    "baseUrl": "https://rickandmortyapi.com/graphql",
+    "placeholders": {
+      "query": "query AllCharacters($page: Int) {\n  characters(page: $page) {\n    results {\n      name\n    }\n  }\n}",
+      "variables": "{\n  \"page\": 1\n}",
+      "headers": "{\n  \"Content-Type\": \"application/json\"\n}"
+    }
   },
   "monacoEditor": {
     "options": {
