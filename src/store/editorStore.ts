@@ -3,6 +3,8 @@ import axios from 'axios';
 import config from '../../config.json';
 import RootStoreModel from './rootStore';
 
+const { query, variables, headers } = config.api.placeholders;
+
 class EditorStore {
   rootStore: RootStoreModel;
   isLoading: boolean;
@@ -17,9 +19,9 @@ class EditorStore {
     makeAutoObservable(this);
     this.isLoading = false;
     this.isError = false;
-    this.queryValue = localStorage.getItem('query') || undefined;
-    this.variablesValue = localStorage.getItem('variables')  || undefined;
-    this.headersValue = localStorage.getItem('headers') || '{ "Content-Type": "application/json" }';
+    this.queryValue = localStorage.getItem('query') || query;
+    this.variablesValue = localStorage.getItem('variables')  || variables;
+    this.headersValue = localStorage.getItem('headers') || headers;
   }
 
   sendRequest() {
