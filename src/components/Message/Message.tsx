@@ -6,7 +6,7 @@ import { message } from 'antd';
 import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 
-const addMessage = observer(() => {
+const addMessage = () => {
   const store = useContext(StoreContext);
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -27,6 +27,6 @@ const addMessage = observer(() => {
   }, [store.authStore.messageInfo.isReady]);
 
   return <>{contextHolder}</>;
-});
+};
 
-export default addMessage;
+export default observer(addMessage);
