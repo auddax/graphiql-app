@@ -1,6 +1,6 @@
 import { StoreContext } from '../../store/StoreProvider';
 import { message } from 'antd';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import styles from './Message.module.scss';
 
@@ -31,8 +31,11 @@ const addMessage = observer(() => {
     });
   };
 
-  if (store.authStore.messageInfo.isReady) success();
-  if (store.editorStore.isError) requestError();
+
+  useEffect(() => {
+    if (store.authStore.messageInfo.isReady) success();
+    if (store.editorStore.isError) requestError();
+  }, [store.authStore.messageInfo.isReady, store.editorStore.isError]);
 
   return <>{contextHolder}</>;
 });
