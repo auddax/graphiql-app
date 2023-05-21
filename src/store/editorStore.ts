@@ -47,13 +47,11 @@ class EditorStore {
       }
     ).catch(error => {
       runInAction(() => {
-        runInAction(() => {
-          this.responseData = error.response.data;
-          this.isError = true;
-          this.errorMessage = error.message;
-          this.isLoading = false;  
-        });
-      })
+        this.responseData = error.response.data;
+        this.isError = true;
+        this.errorMessage = error.message;
+        this.isLoading = false;  
+      });
     });
   }
 
