@@ -12,6 +12,7 @@ import styles from './CodeEditor.module.scss';
 const CodeEditor: React.FC = () => {  
   const store = useContext(StoreContext);
   const options = config.monacoEditor.options as editor.IStandaloneEditorConstructionOptions;
+  const isError = store.editorStore.isError;
 
   const handleCodeChange = (value: string | undefined) => {
     store.editorStore.setQueryValue(value)

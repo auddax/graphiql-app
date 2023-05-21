@@ -1,4 +1,4 @@
-import { makeAutoObservable, runInAction, toJS } from 'mobx';
+import { makeAutoObservable, runInAction } from 'mobx';
 import axios from 'axios';
 import config from '../../config.json';
 import RootStoreModel from './rootStore';
@@ -9,6 +9,7 @@ class EditorStore {
   rootStore: RootStoreModel;
   isLoading: boolean;
   isError: boolean;
+  errorMessage: string | undefined;
   queryValue: string | undefined;
   variablesValue: string | undefined;
   headersValue: string | undefined;
@@ -27,6 +28,8 @@ class EditorStore {
   sendRequest() {
     this.isLoading = true;
     this.isError = false;
+    this.errorMessage = '';
+
     axios.post(
       config.api.baseUrl,
       {
@@ -44,8 +47,12 @@ class EditorStore {
       }
     ).catch(error => {
       runInAction(() => {
-        this.isError = true;
-        this.isLoading = false;
+        runInAction(() => {
+          this.responseData = error.response.data;
+          this.isError = true;
+          this.errorMessage = error.message;
+          this.isLoading = false;  
+        });
       })
     });
   }
