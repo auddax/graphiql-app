@@ -1,19 +1,20 @@
 import React, { useContext } from 'react';
-import { Typography } from 'antd';
+import { Layout, Spin } from 'antd';
 import { StoreContext } from '../../store/StoreProvider';
 import { observer } from 'mobx-react-lite';
 import styles from './ResponseViewer.module.scss';
-import { toJS } from 'mobx';
 
 const ResponseViewer = () => {
   const store = useContext(StoreContext);
-  const { Text, Paragraph} = Typography;
   const response = store.editorStore.responseData;
+  const isLoading = store.editorStore.isLoading;
   
   return (
-    <div className={styles['response-viewer']}>
-      <pre>{JSON.stringify(response, null, 4)}</pre>
-    </div>
+    <Layout className={styles['response-viewer']}>
+      <Spin spinning={isLoading} tip="Загрузка..." wrapperClassName={styles['viewer-spinner']}>
+        <pre className={styles['viewer-content']}>{JSON.stringify(response, null, 4)}</pre>
+      </Spin>
+    </Layout>
   );
 };
 

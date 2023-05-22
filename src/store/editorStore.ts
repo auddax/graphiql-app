@@ -1,36 +1,56 @@
-import { makeAutoObservable, runInAction, toJS } from 'mobx';
+import { makeAutoObservable, runInAction } from 'mobx';
 import axios from 'axios';
+import config from '../../config.json';
 import RootStoreModel from './rootStore';
+
+const { query, variables, headers } = config.api.placeholders;
 
 class EditorStore {
   rootStore: RootStoreModel;
+  isLoading: boolean;
+  isError: boolean;
+  errorMessage: string | undefined;
   queryValue: string | undefined;
-  queryVariables: string | undefined;
-  headers: object | undefined;
+  variablesValue: string | undefined;
+  headersValue: string | undefined;
   responseData: object | undefined;
 
   constructor(rootStore: RootStoreModel) {
     this.rootStore = rootStore;
     makeAutoObservable(this);
-    this.queryValue = localStorage.getItem('query') || '';
-    this.headers = {
-      'Content-Type': 'application/json',
-    }
+    this.isLoading = false;
+    this.isError = false;
+    this.queryValue = localStorage.getItem('query') || query;
+    this.variablesValue = localStorage.getItem('variables')  || variables;
+    this.headersValue = localStorage.getItem('headers') || headers;
   }
 
   sendRequest() {
+    this.isLoading = true;
+    this.isError = false;
+    this.errorMessage = '';
+
     axios.post(
-      'https://rickandmortyapi.com/graphql',
+      config.api.baseUrl,
       {
         query: this.queryValue,
-        variables: this.queryVariables,
+        variables: JSON.parse(this.variablesValue || '{}'),
       },
       {
-        headers: this.headers,
+        headers: JSON.parse(this.headersValue || '{}'),
       }
     ).then(result => {
+        runInAction(() => {
+          this.responseData = result.data;
+          this.isLoading = false;
+        });
+      }
+    ).catch(error => {
       runInAction(() => {
-        this.responseData = result.data;
+        this.responseData = error.response.data;
+        this.isError = true;
+        this.errorMessage = error.message;
+        this.isLoading = false;  
       });
     });
   }
@@ -38,6 +58,16 @@ class EditorStore {
   setQueryValue(queryValue: string | undefined) {
     this.queryValue = queryValue;
     if (this.queryValue) localStorage.setItem('query', this.queryValue);
+  }
+
+  setVariablesValue(variablesValue: string | undefined) {
+    this.variablesValue = variablesValue;
+    if (this.variablesValue) localStorage.setItem('variables', this.variablesValue);
+  }
+
+  setHeadersValue(headersValue: string | undefined) {
+    this.headersValue = headersValue;
+    if (this.headersValue) localStorage.setItem('headers', this.headersValue);
   }
 }
 
