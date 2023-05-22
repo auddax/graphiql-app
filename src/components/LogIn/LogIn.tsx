@@ -11,10 +11,12 @@ import { Button, Form, Input } from 'antd';
 import React, { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { UserDataLog } from '../../types';
+import { useNavigate } from 'react-router-dom';
 
-const LogIn = observer(() => {
+const LogIn = () => {
   const store = useContext(StoreContext);
   const [form] = Form.useForm();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!store.authStore.showLoginPage) form.resetFields();
@@ -24,7 +26,11 @@ const LogIn = observer(() => {
   const onFinish = (values: UserDataLog) => {
     console.log('Received values', values);
 
-    store.authStore.setLogin(values);
+    store.authStore.setLogin(values).then((success) => {
+      if (success) {
+        navigate('/main');
+      }
+    });
   };
 
   return (
@@ -89,6 +95,6 @@ const LogIn = observer(() => {
       </div>
     </>
   );
-});
+};
 
-export default LogIn;
+export default observer(LogIn);

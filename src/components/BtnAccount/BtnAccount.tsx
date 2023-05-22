@@ -1,43 +1,52 @@
 import React, { useContext, useState } from 'react';
 import styles from './BtnAccount.module.scss';
 import { Button } from 'antd';
-import { NavLink } from 'react-router-dom';
-import { StoreContext } from '../../store/StoreProvider';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
+import { typeBtnAuth } from '../../types';
+import { StoreContext } from '../../store/StoreProvider';
 
-const BtnAccount = observer((props: { showBtn: string }) => {
+const BtnAccount = (props: { showBtn: typeBtnAuth }) => {
+  // const [show, setShow] = useState(props.showBtn);
   const store = useContext(StoreContext);
-  const [show, setShow] = useState(props.showBtn);
-
+  const navigate = useNavigate();
   return (
     <>
       <div className={styles['btn-account-container']}>
-        {store.authStore.login ? (
+        {props.showBtn === 'login' ? (
+          <NavLink to="/auth/login">
+            <Button type="primary">Войти</Button>
+          </NavLink>
+        ) : null}
+
+        {props.showBtn === 'logout' ? (
           <Button
             type="primary"
             onClick={() => {
-              store.authStore.logOutUser();
+              store.authStore.logOutUser().then((success) => {
+                console.log('success :>> ', success);
+                navigate('/')
+              });
             }}
           >
             Выйти
           </Button>
-        ) : (
-          <>
-            {show === 'All' || show === 'Login' ? (
-              <NavLink to="/auth/login">
-                <Button type="primary">Войти</Button>
-              </NavLink>
-            ) : null}
-            {show === 'SignUp' || show === 'All' ? (
-              <NavLink to="/auth/signup">
-                <Button type="primary">Зарегистрироваться</Button>
-              </NavLink>
-            ) : null}
-          </>
-        )}
+        ) : null}
+
+        {props.showBtn === 'signup' ? (
+          <NavLink to="/auth/signup">
+            <Button type="primary">Зарегестрироваться</Button>
+          </NavLink>
+        ) : null}
+
+        {props.showBtn === 'home' ? (
+          <NavLink to="/main">
+            <Button type="primary">Главная страница</Button>
+          </NavLink>
+        ) : null}
       </div>
     </>
   );
-});
+};
 
-export default BtnAccount;
+export default observer(BtnAccount);

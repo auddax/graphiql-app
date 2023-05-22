@@ -4,7 +4,7 @@ import React, { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import styles from './Message.module.scss';
 
-const addMessage = observer(() => {
+const addMessage = () => {
   const store = useContext(StoreContext);
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -38,6 +38,6 @@ const addMessage = observer(() => {
   }, [store.authStore.messageInfo.isReady, store.editorStore.isError]);
 
   return <>{contextHolder}</>;
-});
+};
 
-export default addMessage;
+export default observer(addMessage);

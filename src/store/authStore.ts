@@ -15,7 +15,7 @@ class AuthStore {
     this.login = false;
     this.showLoginPage = true;
     this.user = {
-      email: '',
+      email: ' ',
     };
     this.messageInfo = {
       isReady: false,
@@ -27,16 +27,19 @@ class AuthStore {
 
   setLogin(oldUser: IUserStore) {
     const auth = getAuth();
-    signInWithEmailAndPassword(auth, oldUser.email, oldUser.password)
+    return signInWithEmailAndPassword(auth, oldUser.email, oldUser.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        this.user.email = oldUser.email;
-        this.newMessage('success', `You are successfully logged into your account, ${oldUser.email}`);
         this.toggleLogin(true);
+        this.user.email = oldUser.email;
+        this.newMessage('success', `You are successfully logged, ${oldUser.email}.`);
+        return true;
       })
       .catch((error) => {
+        console.log('error :>> ', error);
         const errorCode = error.code.split('auth/')[1].split('-').join(' ');
-        this.newMessage('error', `Error: ${errorCode[0].toUpperCase()+errorCode.slice(1)}`);
+        this.newMessage('error', `Error: ${errorCode[0].toUpperCase() + errorCode.slice(1)}.`);
+        return false;
       })
       .finally(() => this.isReady(true));
   }
@@ -53,28 +56,33 @@ class AuthStore {
 
   setUser(newUser: UserDataReg) {
     const auth = getAuth();
-    createUserWithEmailAndPassword(auth, newUser.email, newUser.password)
+    return createUserWithEmailAndPassword(auth, newUser.email, newUser.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        this.newMessage('success', `You are successfully register into your account, ${newUser.email}`);
+        this.newMessage('success', `You are successfully register, ${newUser.email}, now log in to your account to continue.`);
+        // token id email
+        return true;
       })
       .catch((error) => {
         const errorCode = error.code.split('auth/')[1].split('-').join(' ');
-        this.newMessage('error', `Error: ${errorCode[0].toUpperCase()+errorCode.slice(1)}`);
+        this.newMessage('error', `Error: ${errorCode[0].toUpperCase() + errorCode.slice(1)}.`);
+        return false;
       })
       .finally(() => this.isReady(true));
   }
 
   logOutUser() {
     const auth = getAuth();
-    signOut(auth)
+    return signOut(auth)
       .then(() => {
       this.toggleLogin(false);
       this.user.email = ' ';
-      this.newMessage('success', 'You have successfully Log Out');
+      this.newMessage('success', 'You have successfully Log Out.');
+      return true;
     })
       .catch((error) => {
-      this.newMessage('error', `An error happened this ${error}`);
+        this.newMessage('error', `An error happened this ${error}.`);
+        return false;
     })
       .finally(() => this.isReady(true));
   }

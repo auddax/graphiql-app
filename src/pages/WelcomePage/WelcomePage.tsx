@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './WelcomePage.module.scss';
 
 import { DownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Avatar, Dropdown, Space } from 'antd';
 import BtnAccount from '../../components/BtnAccount';
+import { StoreContext } from '../../store/StoreProvider';
+import { observer } from 'mobx-react-lite';
 
 const WelcomePage = () => {
+  const store = useContext(StoreContext);
   const items: MenuProps['items'] = [
     {
       key: '1',
@@ -91,12 +94,22 @@ const WelcomePage = () => {
           </Dropdown>
         </div>
         <div className={styles['autorisation-info']}>
-          <span>Нажмите сюда чтобы </span>
-          <BtnAccount showBtn='SignUp' />
+          <span>Нажмите сюда </span>
+          {store.authStore.login ? (
+            <BtnAccount showBtn="home" />
+          ) : (
+            <BtnAccount showBtn="signup" />
+          )}
+          <span>или сюда чтобы </span>
+          {store.authStore.login ? (
+            <BtnAccount showBtn="logout" />
+          ) : (
+            <BtnAccount showBtn="login" />
+          )}
         </div>
       </div>
     </div>
   );
 };
 
-export default WelcomePage;
+export default observer(WelcomePage);
