@@ -11,7 +11,7 @@ const Header = () => {
   return (
     <div className={styles['header']}>
       <div className={styles['header-content']}>
-        <NavLink to="/" className={styles['logo']}></NavLink>
+        <NavLink to="/welcome" className={styles['logo']}></NavLink>
         <div
           style={{
             display: 'flex',
