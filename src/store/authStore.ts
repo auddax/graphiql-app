@@ -10,6 +10,7 @@ class AuthStore {
   showLoginPage: boolean;
   user: SuccessUser;
   messageInfo: MessageInfo;
+  loaderIsReady: boolean | undefined;
 
   constructor(rootStore: RootStoreModel) {
     this.rootStore = rootStore;
@@ -71,6 +72,10 @@ class AuthStore {
         return false;
     })
       .finally(() => this.isReady(true));
+  }
+
+  toggleLoader(change: boolean) {
+    this.loaderIsReady = change;
   }
 
   newMessage(type: typeMessage, content: string) {

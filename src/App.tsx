@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import './App.css';
 import MainPage from './pages/MainPage';
@@ -9,11 +9,15 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Message from './components/Message';
 import { CheckingAuth } from './hoc/CheckingAuth';
+import { StoreContext } from './store/StoreProvider';
 import { observer } from 'mobx-react-lite';
+import { MySkeleton } from './components/Skeleton';
 
 const App = observer(() => {
+  const store = useContext(StoreContext);
   return (
     <>
+      {store.authStore.loaderIsReady ? <MySkeleton /> : null}
       <Message />
       <Header />
       <Routes>
