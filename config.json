@@ -16,5 +16,35 @@
         "verticalScrollbarSize": 0
       }
     }
+  },
+  "locale": {
+    "ru": {
+      "buttons": {
+        "signin": "Войти",
+        "register": "Зарегистрироваться",
+        "mainPage": "Главная страница",
+        "signout": "Выйти"
+      },
+      "welcomePage": {
+        "titleStart": "Добро пожаловать на GraphQL созданный",
+        "titleEnd": "студентами курса RSSchool React 2023 Q1.",
+        "authStart": "Нажмите сюда ",
+        "authEnd": "или сюда чтобы "
+      }
+  },
+    "en": {
+      "buttons": {
+        "signin": "Sign in",
+        "register": "Register",
+        "mainPage": "Home",
+        "signout": "Sign out"
+      },
+      "welcomePage": {
+        "titleStart": "Welcome to GraphQL created by",
+        "titleEnd": "RSSchool React 2023 Q1 students.",
+        "authStart": "Click here to ",
+        "authEnd": "or here to "
+      }
+    }
   }
 }

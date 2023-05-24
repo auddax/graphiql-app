@@ -1,15 +1,18 @@
 import React, { useContext } from 'react';
-import styles from './WelcomePage.module.scss';
-
+import { observer } from 'mobx-react-lite';
 import { DownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Avatar, Dropdown, Space } from 'antd';
-import BtnAccount from '../../components/BtnAccount';
 import { StoreContext } from '../../store/StoreProvider';
-import { observer } from 'mobx-react-lite';
+import BtnAccount from '../../components/BtnAccount';
+import config from '../../../config.json';
+import styles from './WelcomePage.module.scss';
 
 const WelcomePage = () => {
   const store = useContext(StoreContext);
+  const locale = store.localeStore.locale;
+  const { welcomePage } = locale === 'ru' ? config.locale.ru : config.locale.en;
+  const { titleStart, titleEnd, authStart, authEnd } = welcomePage;
   const items: MenuProps['items'] = [
     {
       key: '1',
@@ -78,7 +81,7 @@ const WelcomePage = () => {
       <p>Welcome Page</p>
       <div className={styles['page-content']}>
         <div className={styles['welcome-title']}>
-          <span>Добропожаловать на GraphQL созданный&nbsp;</span>
+          <span>{titleStart}&nbsp;</span>
           <Dropdown menu={{ items }}>
             <a
               onClick={(e) => e.preventDefault()}
@@ -87,20 +90,20 @@ const WelcomePage = () => {
               }}
             >
               <Space>
-                студентами курса RSSchool React 2023 Q1.
+                {titleEnd}
                 <DownOutlined />
               </Space>
             </a>
           </Dropdown>
         </div>
         <div className={styles['autorisation-info']}>
-          <span>Нажмите сюда </span>
+          <span>{authStart}</span>
           {store.authStore.login ? (
             <BtnAccount showBtn="home" />
           ) : (
             <BtnAccount showBtn="signup" />
           )}
-          <span>или сюда чтобы </span>
+          <span>{authEnd}</span>
           {store.authStore.login ? (
             <BtnAccount showBtn="logout" />
           ) : (
