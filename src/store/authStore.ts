@@ -1,7 +1,8 @@
 import { makeAutoObservable } from 'mobx';
 import RootStoreModel from './rootStore';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { IUserStore, MessageInfo, SuccessUser, UserDataReg, typeMessage } from '../types';
+import { auth } from '../firebase';
 
 class AuthStore {
   rootStore: RootStoreModel;
@@ -15,7 +16,7 @@ class AuthStore {
     this.login = false;
     this.showLoginPage = true;
     this.user = {
-      email: ' ',
+      email: '',
     };
     this.messageInfo = {
       isReady: false,
@@ -26,17 +27,15 @@ class AuthStore {
   }
 
   setLogin(oldUser: IUserStore) {
-    const auth = getAuth();
     return signInWithEmailAndPassword(auth, oldUser.email, oldUser.password)
-      .then((userCredential) => {
+      .then(async (userCredential) => {
         const user = userCredential.user;
         this.toggleLogin(true);
-        this.user.email = oldUser.email;
-        this.newMessage('success', `You are successfully logged, ${oldUser.email}.`);
+        this.user = { email: oldUser.email }
+        this.newMessage('success', `You are successfully logged in, ${user.email}. Welcome back!`);
         return true;
       })
       .catch((error) => {
-        console.log('error :>> ', error);
         const errorCode = error.code.split('auth/')[1].split('-').join(' ');
         this.newMessage('error', `Error: ${errorCode[0].toUpperCase() + errorCode.slice(1)}.`);
         return false;
@@ -44,23 +43,11 @@ class AuthStore {
       .finally(() => this.isReady(true));
   }
 
-  newMessage(type: typeMessage, content: string) {
-    this.messageInfo.type = type;
-    this.messageInfo.content = content;
-    setTimeout(() => { this.isReady(false); }, 100);
-  }
-
-  isReady(change: boolean) {
-    this.messageInfo.isReady = change;
-  }
-
   setUser(newUser: UserDataReg) {
-    const auth = getAuth();
     return createUserWithEmailAndPassword(auth, newUser.email, newUser.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        this.newMessage('success', `You are successfully register, ${newUser.email}, now log in to your account to continue.`);
-        // token id email
+        this.newMessage('success', `You have successfully registered, ${user.email}. Welcome!`);
         return true;
       })
       .catch((error) => {
@@ -72,11 +59,10 @@ class AuthStore {
   }
 
   logOutUser() {
-    const auth = getAuth();
     return signOut(auth)
       .then(() => {
       this.toggleLogin(false);
-      this.user.email = ' ';
+      this.user.email = '';
       this.newMessage('success', 'You have successfully Log Out.');
       return true;
     })
@@ -85,6 +71,16 @@ class AuthStore {
         return false;
     })
       .finally(() => this.isReady(true));
+  }
+
+  newMessage(type: typeMessage, content: string) {
+    this.messageInfo.type = type;
+    this.messageInfo.content = content;
+    setTimeout(() => { this.isReady(false); }, 100);
+  }
+
+  isReady(change: boolean) {
+    this.messageInfo.isReady = change;
   }
 
   toggleLogin(change: boolean) {
