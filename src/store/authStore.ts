@@ -22,7 +22,7 @@ class AuthStore {
     this.messageInfo = {
       isReady: false,
       type: 'success',
-      content: ' ',
+      content: '',
     };
     makeAutoObservable(this);
   }
@@ -33,7 +33,6 @@ class AuthStore {
         const user = userCredential.user;
         this.toggleLogin(true);
         this.user = { email: oldUser.email }
-        this.newMessage('success', `You are successfully logged in, ${user.email}. Welcome back!`);
         return true;
       })
       .catch((error) => {
@@ -47,8 +46,8 @@ class AuthStore {
   setUser(newUser: UserDataReg) {
     return createUserWithEmailAndPassword(auth, newUser.email, newUser.password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        this.newMessage('success', `You have successfully registered, ${user.email}. Welcome!`);
+        this.toggleLogin(true);
+        this.user = { email: newUser.email }
         return true;
       })
       .catch((error) => {
@@ -64,7 +63,6 @@ class AuthStore {
       .then(() => {
       this.toggleLogin(false);
       this.user.email = '';
-      this.newMessage('success', 'You have successfully Log Out.');
       return true;
     })
       .catch((error) => {
