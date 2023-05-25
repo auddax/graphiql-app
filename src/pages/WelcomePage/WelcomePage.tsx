@@ -2,99 +2,24 @@ import React, { useContext } from 'react';
 import { observer } from 'mobx-react-lite';
 import { DownOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import { Avatar, Dropdown, Space } from 'antd';
+import { Space } from 'antd';
 import { StoreContext } from '../../store/StoreProvider';
 import BtnAccount from '../../components/BtnAccount';
 import config from '../../../config.json';
 import styles from './WelcomePage.module.scss';
+import { Card } from '../../components/PersonCard';
 
 const WelcomePage = () => {
   const store = useContext(StoreContext);
   const locale = store.localeStore.locale;
   const { welcomePage } = locale === 'ru' ? config.locale.ru : config.locale.en;
-  const { titleStart, titleEnd, authStart, authEnd } = welcomePage;
-  const items: MenuProps['items'] = [
-    {
-      key: '1',
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/hell-llex"
-        >
-          hell-llex
-        </a>
-      ),
-      icon: (
-        <Avatar
-          size="small"
-          style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}
-        >
-          H
-        </Avatar>
-      ),
-    },
-    {
-      key: '2',
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/auddax"
-        >
-          auddax
-        </a>
-      ),
-      icon: (
-        <Avatar
-          size="small"
-          style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}
-        >
-          A
-        </Avatar>
-      ),
-    },
-    {
-      key: '3',
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/shalick"
-        >
-          shalick
-        </a>
-      ),
-      icon: (
-        <Avatar
-          size="small"
-          style={{ backgroundColor: '#fde3cf', color: '#f56a00' }}
-        >
-          S
-        </Avatar>
-      ),
-    },
-  ];
+  const { title, authStart, authEnd, titleAbout } = welcomePage;
 
   return (
     <div className={styles['welcome-page']}>
-      <p>Welcome Page</p>
       <div className={styles['page-content']}>
         <div className={styles['welcome-title']}>
-          <span>{titleStart}&nbsp;</span>
-          <Dropdown menu={{ items }}>
-            <a
-              onClick={(e) => e.preventDefault()}
-              style={{
-                fontWeight: 'bold',
-              }}
-            >
-              <Space>
-                {titleEnd}
-                <DownOutlined />
-              </Space>
-            </a>
-          </Dropdown>
+          <span>{title}</span>
         </div>
         <div className={styles['autorisation-info']}>
           <span>{authStart}</span>
@@ -110,6 +35,12 @@ const WelcomePage = () => {
             <BtnAccount showBtn="login" />
           )}
         </div>
+        <h2>{titleAbout}</h2>
+        <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
+          <Card person={'auddax'} />
+          <Card person={'hell-llex'} />
+          <Card person={'shalick'} />
+        </Space>
       </div>
     </div>
   );
