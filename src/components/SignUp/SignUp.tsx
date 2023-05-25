@@ -1,4 +1,3 @@
-import styles from './SignUp.module.scss';
 import { StoreContext } from '../../store/StoreProvider';
 
 import { Button, Checkbox, Form, Input } from 'antd';
@@ -6,6 +5,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { UserDataReg } from '../../types';
 import { useNavigate } from 'react-router-dom';
+import config from '../../../config.json';
+import styles from './SignUp.module.scss';
 
 const tailFormItemLayout = {
   wrapperCol: {
@@ -27,6 +28,9 @@ const SignUp = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const [formLayout, setFormLayout] = useState<LayoutType>('vertical');
+  const locale = store.localeStore.locale;
+  const { signup } = locale === 'ru' ? config.locale.ru : config.locale.en;
+  const { registerBtn, email, emailRuleMessageFormat, emailRuleMessageReq, password, passwordTooltip, confirm, confirmError, confirmPassword, confirmPasswordError, confirmPasswordMessage } = signup;
 
   useEffect(() => {
     if (store.authStore.showLoginPage) form.resetFields();
@@ -62,15 +66,15 @@ const SignUp = () => {
         >
           <Form.Item
             name="email"
-            label="E-mail"
+            label={email}
             rules={[
               {
                 type: 'email',
-                message: 'The input is not valid E-mail!',
+                message: emailRuleMessageFormat,
               },
               {
                 required: true,
-                message: 'Please input your E-mail!',
+                message: emailRuleMessageReq,
               },
             ]}
           >
@@ -79,8 +83,8 @@ const SignUp = () => {
 
           <Form.Item
             name="password"
-            label="Password"
-            tooltip="The password must consist of at least 8 characters, one digit, one letter and one special character."
+            label={password}
+            tooltip={passwordTooltip}
             rules={[
               {
                 required: true,
@@ -96,13 +100,13 @@ const SignUp = () => {
 
           <Form.Item
             name="confirm"
-            label="Confirm Password"
+            label={confirmPassword}
             dependencies={['password']}
             hasFeedback
             rules={[
               {
                 required: true,
-                message: 'Please confirm your password!',
+                message: confirmPasswordMessage,
               },
               ({ getFieldValue }) => ({
                 validator(_, value) {
@@ -110,9 +114,7 @@ const SignUp = () => {
                     return Promise.resolve();
                   }
                   return Promise.reject(
-                    new Error(
-                      'The two passwords that you entered do not match!'
-                    )
+                    new Error(confirmPasswordError)
                   );
                 },
               }),
@@ -130,17 +132,17 @@ const SignUp = () => {
                   value
                     ? Promise.resolve()
                     : Promise.reject(
-                        new Error('To register, you have to give consent.')
+                        new Error(confirmError)
                       ),
               },
             ]}
             {...tailFormItemLayout}
           >
-            <Checkbox>I agree to the processing of my personal data</Checkbox>
+            <Checkbox>{confirm}</Checkbox>
           </Form.Item>
           <Form.Item {...tailFormItemLayout}>
             <Button type="primary" htmlType="submit">
-              Register
+              {registerBtn}
             </Button>
           </Form.Item>
         </Form>

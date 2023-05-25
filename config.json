@@ -25,11 +25,35 @@
         "mainPage": "Главная страница",
         "signout": "Выйти"
       },
+      "login": {
+        "loginBtn": "Войти"
+      },
+      "signup": {
+        "registerBtn": "Зарегистрироваться",
+        "email": "Электронная почта",
+        "emailRuleMessageFormat": "Электронная почта введена неверно",
+        "emailRuleMessageReq": "Пожалуйста введите свой адрес электронной почты",
+        "password": "Пароль", 
+        "passwordTooltip": "Пароль должен состоять не менее чем из 8 символов, одной цифры, одной заглавной буквы и не содержать пробелов",
+        "confirmPassword": "Подтвердите пароль",
+        "confirmPasswordError": "Введенные пароли не совпадают!",
+        "confirmPasswordMessage": "Пожалуйста подтвердите введенный пароль",
+        "confirm": "Я соласен на обработку своих персональных данных",
+        "confirmError": "Для завершения регистрации необходимо дать согласие на обработку персональных данных!"
+      },
       "welcomePage": {
         "titleStart": "Добро пожаловать на GraphQL созданный",
         "titleEnd": "студентами курса RSSchool React 2023 Q1.",
         "authStart": "Нажмите сюда ",
         "authEnd": "или сюда чтобы "
+      },
+      "authPage": {
+        "title": "Привет!",
+        "subtitle": "Чтобы начать пользоваться, пожалуйста, войдите в систему, используя вашу электронную почту и пароль",
+        "titleAuth": "С возвращением!",
+        "subtitleAuth": "Введите свои личные данные и начните пользоваться!",
+        "registerBtn": "Зарегистрироваться",
+        "signinBtn": "Войти"
       }
   },
     "en": {
@@ -39,11 +63,35 @@
         "mainPage": "Home",
         "signout": "Sign out"
       },
+      "login": {
+        "loginBtn": "Sign in"
+      },
+      "signup": {
+        "registerBtn": "Register",
+        "email": "E-mail",
+        "emailRuleMessageFormat": "The input is not valid E-mail!",
+        "emailRuleMessageReq": "Please enter your E-mail!",
+        "password": "Password", 
+        "passwordTooltip": "The password must be at least 8 characters, one number, one capital letter and contain no spaces",
+        "confirmPassword": "Confirm password",
+        "confirmPasswordError": "The two passwords that you entered do not match!",
+        "confirmPasswordMessage": "Please confirm your password!",
+        "confirm": "I agree to the processing of my personal data",
+        "confirmError": "To register, you should give consent!"
+      },
       "welcomePage": {
         "titleStart": "Welcome to GraphQL created by",
         "titleEnd": "RSSchool React 2023 Q1 students.",
         "authStart": "Click here to ",
         "authEnd": "or here to "
+      },
+      "authPage": {
+        "title": "Hello!",
+        "subtitle": "Please login using your email and password",
+        "titleAuth": "Welcome back!",
+        "subtitleAuth": "Enter your personal details to start!",
+        "registerBtn": "Register",
+        "signinBtn": "Sign in"
       }
     }
   }

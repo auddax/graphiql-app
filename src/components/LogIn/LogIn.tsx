@@ -12,11 +12,15 @@ import React, { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { UserDataLog } from '../../types';
 import { useNavigate } from 'react-router-dom';
+import config from '../../../config.json';
 
 const LogIn = () => {
   const store = useContext(StoreContext);
   const [form] = Form.useForm();
   const navigate = useNavigate();
+  const locale = store.localeStore.locale;
+  const { login } = locale === 'ru' ? config.locale.ru : config.locale.en;
+  const { loginBtn } = login;
 
   useEffect(() => {
     if (!store.authStore.showLoginPage) form.resetFields();
@@ -87,7 +91,7 @@ const LogIn = () => {
               htmlType="submit"
               className="login-form-button"
             >
-              Log in
+              {loginBtn}
             </Button>
           </Form.Item>
         </Form>
