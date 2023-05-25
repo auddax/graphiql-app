@@ -1,16 +1,20 @@
-import styles from './AuthPage.module.scss';
 import React, { useContext, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
-import LogIn from '../../components/LogIn/LogIn';
-import SignUp from '../../components/SignUp/SignUp';
 import { Button } from 'antd';
 import { StoreContext } from '../../store/StoreProvider';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import LogIn from '../../components/LogIn/LogIn';
+import SignUp from '../../components/SignUp/SignUp';
+import config from '../../../config.json';
+import styles from './AuthPage.module.scss';
 
 const AuthPage = () => {
   const store = useContext(StoreContext);
   const { page } = useParams();
   const navigate = useNavigate();
+  const locale = store.localeStore.locale;
+  const { authPage } = locale === 'ru' ? config.locale.ru : config.locale.en;
+  const { title, subtitle, titleAuth, subtitleAuth, registerBtn, signinBtn } = authPage;
 
   useEffect(() => {
     if (page === 'login' || page === 'signup') {
@@ -53,10 +57,10 @@ const AuthPage = () => {
                     styles['overlay-left'],
                   ].join(' ')}
                 >
-                  <h1>С возвращением!</h1>
-                  <p>Введите свои личные данные и начните пользоваться!</p>
+                  <h1>{titleAuth}</h1>
+                  <p>{subtitleAuth}</p>
                   <NavLink to="/auth/login">
-                    <Button className={styles['ghost']}>Войти</Button>
+                    <Button className={styles['ghost']}>{signinBtn}</Button>
                   </NavLink>
                 </div>
                 <div
@@ -65,14 +69,13 @@ const AuthPage = () => {
                     styles['overlay-right'],
                   ].join(' ')}
                 >
-                  <h1>Привет!</h1>
+                  <h1>{title}</h1>
                   <p>
-                    Чтобы начать пользоваться, пожалуйста, войдите в систему,
-                    используя вашу электронную почту и пароль
+                    {subtitle}
                   </p>
                   <NavLink to="/auth/signup">
                     <Button className={styles['ghost']}>
-                      Зарегестрироваться
+                      {registerBtn}
                     </Button>
                   </NavLink>
                 </div>
