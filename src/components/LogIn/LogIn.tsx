@@ -19,8 +19,18 @@ const LogIn = () => {
   const [form] = Form.useForm();
   const navigate = useNavigate();
   const locale = store.localeStore.locale;
-  const { login } = locale === 'ru' ? config.locale.ru : config.locale.en;
-  const { loginBtn } = login;
+  const { login, message } = locale === 'ru' ? config.locale.ru : config.locale.en;
+  const {
+    loginBtn,
+    email,
+    emailRuleMessageFormat,
+    emailRuleMessageReq,
+    password,
+    passwordError,
+    passwordMessage,
+  } = login;
+
+const { loginP1, loginP2 } = message;
 
   useEffect(() => {
     if (!store.authStore.showLoginPage) form.resetFields();
@@ -30,6 +40,7 @@ const LogIn = () => {
   const onFinish = (values: UserDataLog) => {
     store.authStore.setLogin(values).then((success) => {
       if (success) {
+        store.authStore.newMessage('success', `${loginP1}, ${store.authStore.user.email}. ${loginP2}!`)
         navigate('/main');
       }
     });
@@ -50,17 +61,17 @@ const LogIn = () => {
             rules={[
               {
                 type: 'email',
-                message: 'The input is not valid E-mail!',
+                message: emailRuleMessageFormat,
               },
               {
                 required: true,
-                message: 'Please input your E-mail!',
+                message: emailRuleMessageReq,
               },
             ]}
           >
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="E-mail"
+              placeholder={email}
             />
           </Form.Item>
 
@@ -69,16 +80,19 @@ const LogIn = () => {
             rules={[
               {
                 required: true,
-                message: 'Please input your valid Password!',
+                message: passwordMessage,
+              },
+              {
                 pattern:
                   /^.*(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])\S{8,}.*$/,
+                message: passwordError,
               },
             ]}
           >
             <Input.Password
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
-              placeholder="Password"
+              placeholder={password}
               iconRender={(visible) =>
                 visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
               }

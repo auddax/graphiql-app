@@ -11,8 +11,10 @@ const BtnAccount = (props: { showBtn: typeBtnAuth }) => {
   const store = useContext(StoreContext);
   const navigate = useNavigate();
   const locale = store.localeStore.locale;
-  const { buttons } = locale === 'ru' ? config.locale.ru : config.locale.en;
+  const { buttons, message } = locale === 'ru' ? config.locale.ru : config.locale.en;
   const { signin, signout, register, mainPage } = buttons;
+  const { loginOutSuccess } = message;
+
   return (
     <>
       <div className={styles['btn-account-container']}>
@@ -27,7 +29,10 @@ const BtnAccount = (props: { showBtn: typeBtnAuth }) => {
             type="primary"
             onClick={() => {
               store.authStore.logOutUser().then((success) => {
-                navigate('/')
+                if (success) { 
+                  store.authStore.newMessage('success', `${loginOutSuccess}!`)
+                  navigate('/')
+                }
               });
             }}
           >

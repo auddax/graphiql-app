@@ -29,8 +29,24 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [formLayout, setFormLayout] = useState<LayoutType>('vertical');
   const locale = store.localeStore.locale;
-  const { signup } = locale === 'ru' ? config.locale.ru : config.locale.en;
-  const { registerBtn, email, emailRuleMessageFormat, emailRuleMessageReq, password, passwordTooltip, confirm, confirmError, confirmPassword, confirmPasswordError, confirmPasswordMessage } = signup;
+  const { signup, message } = locale === 'ru' ? config.locale.ru : config.locale.en;
+  const {
+    registerBtn,
+    email,
+    emailRuleMessageFormat,
+    emailRuleMessageReq,
+    password,
+    passwordTooltip,
+    confirm,
+    confirmError,
+    confirmPassword,
+    confirmPasswordError,
+    confirmPasswordMessage,
+    passwordMessage,
+    passwordError,
+  } = signup;
+
+  const { registerP1, registerP2 } = message;
 
   useEffect(() => {
     if (store.authStore.showLoginPage) form.resetFields();
@@ -40,6 +56,7 @@ const SignUp = () => {
   const onFinish = (values: UserDataReg) => {
     store.authStore.setUser(values).then((success) => {
       if (success) {
+        store.authStore.newMessage('success', `${registerP1}, ${store.authStore.user.email}. ${registerP2}!`)
         navigate('/main');
       }
     });
@@ -88,9 +105,12 @@ const SignUp = () => {
             rules={[
               {
                 required: true,
-                message: 'Please input your valid password!',
+                message: passwordMessage,
+              },
+              {
                 pattern:
                   /^.*(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])\S{8,}.*$/,
+                message: passwordError,
               },
             ]}
             hasFeedback
@@ -113,9 +133,7 @@ const SignUp = () => {
                   if (!value || getFieldValue('password') === value) {
                     return Promise.resolve();
                   }
-                  return Promise.reject(
-                    new Error(confirmPasswordError)
-                  );
+                  return Promise.reject(new Error(confirmPasswordError));
                 },
               }),
             ]}
@@ -131,9 +149,7 @@ const SignUp = () => {
                 validator: (_, value) =>
                   value
                     ? Promise.resolve()
-                    : Promise.reject(
-                        new Error(confirmError)
-                      ),
+                    : Promise.reject(new Error(confirmError)),
               },
             ]}
             {...tailFormItemLayout}

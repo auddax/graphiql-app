@@ -26,18 +26,26 @@
         "signout": "Выйти"
       },
       "login": {
-        "loginBtn": "Войти"
+        "loginBtn": "Войти",
+        "email": "Электронная почта",
+        "emailRuleMessageFormat": "Электронная почта введена неверно!",
+        "emailRuleMessageReq": "Пожалуйста, введите свой адрес электронной почты!",
+        "password": "Пароль", 
+        "passwordError": "Пожалуйста, введите ваш действительный пароль!",
+        "passwordMessage": "Пожалуйста, введите ваш пароль!"
       },
       "signup": {
         "registerBtn": "Зарегистрироваться",
         "email": "Электронная почта",
-        "emailRuleMessageFormat": "Электронная почта введена неверно",
-        "emailRuleMessageReq": "Пожалуйста введите свой адрес электронной почты",
+        "emailRuleMessageFormat": "Электронная почта введена неверно!",
+        "emailRuleMessageReq": "Пожалуйста, введите свой адрес электронной почты!",
         "password": "Пароль", 
-        "passwordTooltip": "Пароль должен состоять не менее чем из 8 символов, одной цифры, одной заглавной буквы и не содержать пробелов",
+        "passwordError": "Пожалуйста, введите ваш действительный пароль!",
+        "passwordMessage": "Пожалуйста, введите ваш пароль!",
+        "passwordTooltip": "Пароль должен состоять как минимум из 8 символов, одной цифры, одной буквы и одного специального символа.",
         "confirmPassword": "Подтвердите пароль",
         "confirmPasswordError": "Введенные пароли не совпадают!",
-        "confirmPasswordMessage": "Пожалуйста подтвердите введенный пароль",
+        "confirmPasswordMessage": "Пожалуйста, подтвердите введенный пароль!",
         "confirm": "Я соласен на обработку своих персональных данных",
         "confirmError": "Для завершения регистрации необходимо дать согласие на обработку персональных данных!"
       },
@@ -49,11 +57,18 @@
       },
       "authPage": {
         "title": "Привет!",
-        "subtitle": "Чтобы начать пользоваться, пожалуйста, войдите в систему, используя вашу электронную почту и пароль",
+        "subtitle": "Чтобы начать пользоваться, пожалуйста, зарегистрируйтесь в системе, используя вашу электронную почту и пароль.",
         "titleAuth": "С возвращением!",
-        "subtitleAuth": "Введите свои личные данные и начните пользоваться!",
+        "subtitleAuth": "Введите свою электронную почту и пароль, чтобы продолжить.",
         "registerBtn": "Зарегистрироваться",
         "signinBtn": "Войти"
+      },
+      "message": {
+        "registerP1": "Вы успешно зарегистрировались",
+        "registerP2": "Добро пожаловать",
+        "loginP1": "Вы успешно вошли в систему",
+        "loginP2": "С возвращением",
+        "loginOutSuccess": "Вы успешно вышли из системы. Будем ждать вас снова"
       }
   },
     "en": {
@@ -64,15 +79,23 @@
         "signout": "Sign out"
       },
       "login": {
-        "loginBtn": "Sign in"
+        "loginBtn": "Sign in",
+        "email": "E-mail",
+        "emailRuleMessageFormat": "The input is not valid E-mail!",
+        "emailRuleMessageReq": "Please enter your E-mail!",
+        "password": "Password",
+        "passwordError": "Please input your valid password!",
+        "passwordMessage": "Please enter your password!"
       },
       "signup": {
         "registerBtn": "Register",
         "email": "E-mail",
         "emailRuleMessageFormat": "The input is not valid E-mail!",
         "emailRuleMessageReq": "Please enter your E-mail!",
-        "password": "Password", 
-        "passwordTooltip": "The password must be at least 8 characters, one number, one capital letter and contain no spaces",
+        "password": "Password",
+        "passwordError": "Please input your valid password!",
+        "passwordMessage": "Please enter your password!",
+        "passwordTooltip": "The password must consist of at least 8 characters, one digit, one letter and one special character.",
         "confirmPassword": "Confirm password",
         "confirmPasswordError": "The two passwords that you entered do not match!",
         "confirmPasswordMessage": "Please confirm your password!",
@@ -87,11 +110,18 @@
       },
       "authPage": {
         "title": "Hello!",
-        "subtitle": "Please login using your email and password",
+        "subtitle": "To start using it, please register in the system using your email and password.",
         "titleAuth": "Welcome back!",
-        "subtitleAuth": "Enter your personal details to start!",
+        "subtitleAuth": "Enter your email and password to continue.",
         "registerBtn": "Register",
         "signinBtn": "Sign in"
+      },
+      "message": {
+        "registerP1": "You have successfully registered",
+        "registerP2": "Welcome",
+        "loginP1": "You are successfully logged in",
+        "loginP2": "Welcome back",
+        "loginOutSuccess": "You are successfully logged out. We will be waiting for you again"
       }
     }
   }
