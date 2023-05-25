@@ -12,7 +12,7 @@
       "minimap": { "enabled": false },
       "scrollBeyondLastLine": false,
       "renderLineHighlight": "none",
-      "scrollbar": { 
+      "scrollbar": {
         "verticalScrollbarSize": 0
       }
     }
@@ -30,7 +30,7 @@
         "email": "Электронная почта",
         "emailRuleMessageFormat": "Электронная почта введена неверно!",
         "emailRuleMessageReq": "Пожалуйста, введите свой адрес электронной почты!",
-        "password": "Пароль", 
+        "password": "Пароль",
         "passwordError": "Пожалуйста, введите ваш действительный пароль!",
         "passwordMessage": "Пожалуйста, введите ваш пароль!"
       },
@@ -39,7 +39,7 @@
         "email": "Электронная почта",
         "emailRuleMessageFormat": "Электронная почта введена неверно!",
         "emailRuleMessageReq": "Пожалуйста, введите свой адрес электронной почты!",
-        "password": "Пароль", 
+        "password": "Пароль",
         "passwordError": "Пожалуйста, введите ваш действительный пароль!",
         "passwordMessage": "Пожалуйста, введите ваш пароль!",
         "passwordTooltip": "Пароль должен состоять как минимум из 8 символов, одной цифры, одной буквы и одного специального символа.",
@@ -50,10 +50,10 @@
         "confirmError": "Для завершения регистрации необходимо дать согласие на обработку персональных данных!"
       },
       "welcomePage": {
-        "titleStart": "Добро пожаловать на GraphQL созданный",
-        "titleEnd": "студентами курса RSSchool React 2023 Q1.",
+        "title": "Добро пожаловать на GraphQL созданный студентами курса RSSchool React 2023 Q1.",
         "authStart": "Нажмите сюда ",
-        "authEnd": "или сюда чтобы "
+        "authEnd": "или сюда чтобы ",
+        "titleAbout": "Команда разработчиков"
       },
       "authPage": {
         "title": "Привет!",
@@ -69,8 +69,22 @@
         "loginP1": "Вы успешно вошли в систему",
         "loginP2": "С возвращением",
         "loginOutSuccess": "Вы успешно вышли из системы. Будем ждать вас снова"
+      },
+      "personTeam": {
+        "hellllex": {
+          "name":"hell-llex",
+          "info": "Александр - разработчик, разработка аутентификация, разработка страницы приветствия, разработка страницы аутентификация"
+        },
+        "auddax": {
+          "name":"auddax",
+          "info": "Кирилл - тимлид, организация работы команды и разработка архитектуры проекта, разработка главной страницы с редактором кода"
+        },
+        "shalick": {
+          "name":"shalick",
+          "info": "Александр - разработчик, разработка документации, разработка страницы 404"
+        }
       }
-  },
+    },
     "en": {
       "buttons": {
         "signin": "Sign in",
@@ -103,10 +117,10 @@
         "confirmError": "To register, you should give consent!"
       },
       "welcomePage": {
-        "titleStart": "Welcome to GraphQL created by",
-        "titleEnd": "RSSchool React 2023 Q1 students.",
+        "title": "Welcome to GraphQL created by RSSchool React 2023 Q1 students.",
         "authStart": "Click here to ",
-        "authEnd": "or here to "
+        "authEnd": "or here to ",
+        "titleAbout": "Development team"
       },
       "authPage": {
         "title": "Hello!",
@@ -122,6 +136,20 @@
         "loginP1": "You are successfully logged in",
         "loginP2": "Welcome back",
         "loginOutSuccess": "You are successfully logged out. We will be waiting for you again"
+      },
+      "personTeam": {
+        "hellllex": {
+          "name":"hell-llex",
+          "info": "Alexander - developer, authentication development, welcome page development, authentication page development"
+        },
+        "auddax": {
+          "name":"auddax",
+          "info": "Kirill - team leader, team organization and project architecture development, main page development with code editor"
+        },
+        "shalick": {
+          "name":"shalick",
+          "info": "Alexander - developer, documentation development, 404 page development"
+        }
       }
     }
   }
