@@ -2,8 +2,7 @@ import React, { useContext } from 'react';
 import styles from './PersonCard.module.scss';
 import { StoreContext } from '../../store/StoreProvider';
 import config from '../../../config.json';
-
-type Person = { person: 'hell-llex' | 'auddax' | 'shalick' };
+import { Person } from '../../types';
 
 const Card = ({ person }: Person) => {
   const store = useContext(StoreContext);
