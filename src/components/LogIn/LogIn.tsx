@@ -24,8 +24,6 @@ const LogIn = () => {
   }, [store.authStore.showLoginPage, store.authStore.login]);
 
   const onFinish = (values: UserDataLog) => {
-    console.log('Received values', values);
-
     store.authStore.setLogin(values).then((success) => {
       if (success) {
         navigate('/main');
@@ -68,7 +66,8 @@ const LogIn = () => {
               {
                 required: true,
                 message: 'Please input your valid Password!',
-                pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\S{8,}$/,
+                pattern:
+                  /^.*(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])\S{8,}.*$/,
               },
             ]}
           >

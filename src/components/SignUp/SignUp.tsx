@@ -34,11 +34,9 @@ const SignUp = () => {
   }, [store.authStore.showLoginPage, store.authStore.login]);
 
   const onFinish = (values: UserDataReg) => {
-    console.log('Received values', values);
-
     store.authStore.setUser(values).then((success) => {
       if (success) {
-        navigate('/auth/login');
+        navigate('/main');
       }
     });
   };
@@ -82,12 +80,13 @@ const SignUp = () => {
           <Form.Item
             name="password"
             label="Password"
-            tooltip="The password must be at least 8 characters, one number, one capital letter and contain no spaces."
+            tooltip="The password must consist of at least 8 characters, one digit, one letter and one special character."
             rules={[
               {
                 required: true,
                 message: 'Please input your valid password!',
-                pattern: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\S{8,}$/,
+                pattern:
+                  /^.*(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])\S{8,}.*$/,
               },
             ]}
             hasFeedback

@@ -7,7 +7,6 @@ import { typeBtnAuth } from '../../types';
 import { StoreContext } from '../../store/StoreProvider';
 
 const BtnAccount = (props: { showBtn: typeBtnAuth }) => {
-  // const [show, setShow] = useState(props.showBtn);
   const store = useContext(StoreContext);
   const navigate = useNavigate();
   return (
@@ -24,7 +23,6 @@ const BtnAccount = (props: { showBtn: typeBtnAuth }) => {
             type="primary"
             onClick={() => {
               store.authStore.logOutUser().then((success) => {
-                console.log('success :>> ', success);
                 navigate('/')
               });
             }}

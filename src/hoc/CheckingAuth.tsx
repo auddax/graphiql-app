@@ -1,20 +1,35 @@
-import { useLocation, Navigate, redirect } from 'react-router-dom';
-import React, { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+import React, { useContext, useEffect } from 'react';
 import { StoreContext } from '../store/StoreProvider';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../firebase';
 
 const CheckingAuth = ({
   children,
-  auth,
+  userAccess,
   otherPath,
 }: {
   children: JSX.Element;
-  auth: boolean;
-  otherPath: string;
+  userAccess?: boolean;
+  otherPath?: string;
 }) => {
   const store = useContext(StoreContext);
-  if (store.authStore.login === !auth) {
-    return <Navigate to={`${otherPath}`} />;
-  }
+
+  const [user, loading, error] = useAuthState(auth);
+
+  useEffect(() => {
+    if (loading) {
+      store.authStore.toggleLoader(true);
+      return;
+    }
+    store.authStore.toggleLoader(false);
+    store.authStore.toggleLogin(!!user);
+  }, [user, loading]);
+
+  if (loading) return null;
+
+  if (otherPath && !!user === !userAccess) return <Navigate to={`${otherPath}`} />;
+
   return children;
 };
 
