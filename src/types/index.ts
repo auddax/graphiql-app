@@ -32,3 +32,5 @@ export type MessageInfo = {
   type: typeMessage;
   content: string;
 }
+
+export type Person = { person: 'hell-llex' | 'auddax' | 'shalick' };
