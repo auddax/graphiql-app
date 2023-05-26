@@ -26,6 +26,9 @@
 
     a {
       opacity: 0.8;
+      color: black;
+      text-decoration: none;
+
       &:hover {
         opacity: 1;
       }
@@ -42,6 +45,34 @@
       background-image: url(../../assets/rs-school-js_.svg);
       background-size: cover;
       background-repeat: no-repeat;
+    }
+
+
+    .team-desktop {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .team-mobile {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .footer {
+    .footer-content {
+      .team-desktop {
+        display: none;
+      }
+
+      .team-mobile {
+        display: flex;
+      }
     }
   }
 }
