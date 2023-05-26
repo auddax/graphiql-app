@@ -84,7 +84,7 @@ const { loginP1, loginP2 } = message;
               },
               {
                 pattern:
-                  /^.*(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_])\S{8,}.*$/,
+                  /^.*(?=.*\d)(?=.*[a-zA-Z])(?=.*[\W_])\S{8,}.*$/,
                 message: passwordError,
               },
             ]}
