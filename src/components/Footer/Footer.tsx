@@ -1,7 +1,10 @@
 import React from "react";
+import { Typography } from "antd";
 import styles from "./Footer.module.scss";
 
 const Footer = () => {
+  const { Text } = Typography;
+
   return (
     <div className={styles["footer"]}>
       <div className={styles["footer-content"]}>
@@ -12,7 +15,7 @@ const Footer = () => {
           title="Auddax"
           rel="noreferrer"
         >
-          Kirill <span className={styles.lastName}>Konovalov</span>
+          <Text>Kirill <span className={styles.lastName}>Konovalov</span></Text>
         </a>
         <a
           href="https://github.com/hell-llex"
@@ -21,7 +24,7 @@ const Footer = () => {
           title="Hell-llex"
           rel="noreferrer"
         >
-          Alexander <span className={styles.lastName}>Demeshchenko</span>
+          <Text>Alexander <span className={styles.lastName}>Demeshchenko</span></Text>
         </a>
         <a
           href="https://github.com/shalick"
@@ -30,7 +33,7 @@ const Footer = () => {
           title="Shalick"
           rel="noreferrer"
         >
-          Aliaksandr <span className={styles.lastName}>Shabanovich</span>
+          <Text>Aliaksandr <span className={styles.lastName}>Shabanovich</span></Text>
         </a>
         <a
           className={styles.rssLink}
@@ -39,7 +42,7 @@ const Footer = () => {
           title="RS School"
           rel="noreferrer"
         />
-        <p>2023</p>
+        <Text>2023</Text>
       </div>
     </div>
   );
