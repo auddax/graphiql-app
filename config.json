@@ -21,8 +21,8 @@
     "ru": {
       "buttons": {
         "signin": "Войти",
-        "register": "Зарегистрироваться",
-        "mainPage": "Главная страница",
+        "signup": "Зарегистрироваться",
+        "mainPage": "Перейти на главную",
         "signout": "Выйти"
       },
       "login": {
@@ -88,13 +88,13 @@
     },
     "en": {
       "buttons": {
-        "signin": "Sign in",
-        "register": "Register",
-        "mainPage": "Home",
-        "signout": "Sign out"
+        "signin": "Sign In",
+        "signup": "Sign Up",
+        "mainPage": "Go to Main",
+        "signout": "Sign Out"
       },
       "login": {
-        "loginBtn": "Sign in",
+        "loginBtn": "Sign In",
         "email": "E-mail",
         "emailRuleMessageFormat": "The input is not valid E-mail!",
         "emailRuleMessageReq": "Please enter your E-mail!",
@@ -103,7 +103,7 @@
         "passwordMessage": "Please enter your password!"
       },
       "signup": {
-        "registerBtn": "Register",
+        "registerBtn": "Sign Up",
         "email": "E-mail",
         "emailRuleMessageFormat": "The input is not valid E-mail!",
         "emailRuleMessageReq": "Please enter your E-mail!",
@@ -128,8 +128,8 @@
         "subtitle": "To start using it, please register in the system using your email and password.",
         "titleAuth": "Welcome back!",
         "subtitleAuth": "Enter your email and password to continue.",
-        "registerBtn": "Register",
-        "signinBtn": "Sign in",
+        "registerBtn": "Sign Up",
+        "signinBtn": "Sign In",
         "titleMobile": "Click here to"
       },
       "message": {
