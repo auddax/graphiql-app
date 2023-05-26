@@ -18,23 +18,26 @@ const WelcomePage = () => {
   return (
     <div className={styles['welcome-page']}>
       <div className={styles['page-content']}>
-        <div className={styles['welcome-title']}>
-          <span>{title}</span>
-        </div>
-        <div className={styles['autorisation-info']}>
-          <span>{authStart}</span>
-          {store.authStore.login ? (
-            <BtnAccount showBtn="home" />
-          ) : (
-            <BtnAccount showBtn="signup" />
-          )}
-          <span>{authEnd}</span>
-          {store.authStore.login ? (
-            <BtnAccount showBtn="logout" />
-          ) : (
-            <BtnAccount showBtn="login" />
-          )}
-        </div>
+        <h2 className={styles['welcome-title']}>{title}</h2>
+        <Space className={styles['autorisation-info']} wrap>
+          <Space>
+            <p>{authStart}</p>
+            {store.authStore.login ? (
+              <BtnAccount showBtn="home" />
+            ) : (
+              <BtnAccount showBtn="signup" />
+            )}
+          </Space>
+          <Space>
+            <p>{authEnd}</p>
+            {store.authStore.login ? (
+              <BtnAccount showBtn="logout" />
+            ) : (
+              <BtnAccount showBtn="login" />
+            )}
+          </Space>
+        </Space>
+
         <h2>{titleAbout}</h2>
         <Space direction="vertical" size="middle" style={{ display: 'flex' }}>
           <Card person={'auddax'} />

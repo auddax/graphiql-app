@@ -61,7 +61,8 @@
         "titleAuth": "С возвращением!",
         "subtitleAuth": "Введите свою электронную почту и пароль, чтобы продолжить.",
         "registerBtn": "Зарегистрироваться",
-        "signinBtn": "Войти"
+        "signinBtn": "Войти",
+        "titleMobile": "Нажмите сюда, чтобы"
       },
       "message": {
         "registerP1": "Вы успешно зарегистрировались",
@@ -128,7 +129,8 @@
         "titleAuth": "Welcome back!",
         "subtitleAuth": "Enter your email and password to continue.",
         "registerBtn": "Register",
-        "signinBtn": "Sign in"
+        "signinBtn": "Sign in",
+        "titleMobile": "Click here to"
       },
       "message": {
         "registerP1": "You have successfully registered",

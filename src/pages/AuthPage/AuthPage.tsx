@@ -14,7 +14,7 @@ const AuthPage = () => {
   const navigate = useNavigate();
   const locale = store.localeStore.locale;
   const { authPage } = locale === 'ru' ? config.locale.ru : config.locale.en;
-  const { title, subtitle, titleAuth, subtitleAuth, registerBtn, signinBtn } = authPage;
+  const { title, subtitle, titleAuth, subtitleAuth, registerBtn, signinBtn, titleMobile } = authPage;
 
   useEffect(() => {
     if (page === 'login' || page === 'signup') {
@@ -59,6 +59,7 @@ const AuthPage = () => {
                 >
                   <h1>{titleAuth}</h1>
                   <p>{subtitleAuth}</p>
+                  <p className={styles['title-mobile']}>{titleMobile}</p>
                   <NavLink to="/auth/login">
                     <Button className={styles['ghost']}>{signinBtn}</Button>
                   </NavLink>
@@ -70,9 +71,8 @@ const AuthPage = () => {
                   ].join(' ')}
                 >
                   <h1>{title}</h1>
-                  <p>
-                    {subtitle}
-                  </p>
+                  <p>{subtitle}</p>
+                  <p className={styles['title-mobile']}>{titleMobile}</p>
                   <NavLink to="/auth/signup">
                     <Button className={styles['ghost']}>
                       {registerBtn}
