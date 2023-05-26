@@ -33,7 +33,7 @@ const App = observer(() => {
         <Route
           path="/auth/:page"
           element={
-            <CheckingAuth userAccess={false} otherPath={'/welcome'}>
+            <CheckingAuth userAccess={false} otherPath={'/main'}>
               <AuthPage />
             </CheckingAuth>
           }
