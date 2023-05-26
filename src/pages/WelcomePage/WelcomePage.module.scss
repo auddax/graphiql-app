@@ -1,6 +1,7 @@
 .welcome-page {
   width: 100%;
   min-height: 80vh;
+  margin: 10vh 0 0 0;
 
   .page-content {
     padding: 5vh 2vw;
@@ -15,8 +16,8 @@
 
   .welcome-title {
     width: 100%;
+    text-align: center;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
   }
