@@ -12,7 +12,7 @@ const BtnAccount = (props: { showBtn: typeBtnAuth }) => {
   const navigate = useNavigate();
   const locale = store.localeStore.locale;
   const { buttons, message } = locale === 'ru' ? config.locale.ru : config.locale.en;
-  const { signin, signout, register, mainPage } = buttons;
+  const { signin, signout, signup, mainPage } = buttons;
   const { loginOutSuccess } = message;
 
   return (
@@ -42,7 +42,7 @@ const BtnAccount = (props: { showBtn: typeBtnAuth }) => {
 
         {props.showBtn === 'signup' ? (
           <NavLink to="/auth/signup">
-            <Button type="primary">{register}</Button>
+            <Button type="primary">{signup}</Button>
           </NavLink>
         ) : null}
 
