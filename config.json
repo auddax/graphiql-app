@@ -1,6 +1,11 @@
 {
   "api": {
     "baseUrl": "https://rickandmortyapi.com/graphql",
+    "introspection": {
+      "schema": {
+        "queryTypes": "{ __schema { queryType { fields { name description type { name } args { name } } } } }"
+      }
+    },
     "placeholders": {
       "query": "query AllCharacters($page: Int) {\n  characters(page: $page) {\n    results {\n      name\n    }\n  }\n}",
       "variables": "{\n  \"page\": 1\n}",

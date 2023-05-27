@@ -4,23 +4,7 @@ import config from '../../config.json';
 import axios from 'axios';
 
 const { headers } = config.api.placeholders;
-
-const query = `{
-  __schema {
-    queryType {
-      fields {
-        name
-        description
-        type {
-          name
-        }
-        args {
-          name
-        }
-      }
-    }
-  }
-}`
+const { queryTypes } = config.api.introspection.schema;
 
 class SchemaStore {
   rootStore: RootStoreModel;
@@ -36,7 +20,7 @@ class SchemaStore {
     makeAutoObservable(this);
     this.isLoading = false;
     this.isError = false;
-    this.queryValue = query;
+    this.queryValue = queryTypes;
     this.headersValue = localStorage.getItem('headers') || headers;
   }
 
