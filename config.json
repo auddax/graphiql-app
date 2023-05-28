@@ -76,20 +76,20 @@
         "loginP2": "С возвращением",
         "loginOutSuccess": "Вы успешно вышли из системы. Будем ждать вас снова"
       },
-      "personTeam": {
-        "hellllex": {
-          "name":"hell-llex",
-          "info": "Александр - разработчик, разработка аутентификации, разработка страницы приветствия, разработка страницы аутентификация, добавление адаптивности, редактирование анимации хедера, создание логотипа."
-        },
-        "auddax": {
-          "name":"auddax",
+      "personTeam": [
+        {
+          "name": "auddax",
           "info": "Кирилл - тимлид, организация работы команды и разработка архитектуры проекта, разработка главной страницы с редактором кода."
         },
-        "shalick": {
-          "name":"shalick",
+        {
+          "name": "hell-llex",
+          "info": "Александр - разработчик, разработка аутентификации, разработка страницы приветствия, разработка страницы аутентификация, добавление адаптивности, редактирование анимации хедера, создание логотипа."
+        },
+        {
+          "name": "shalick",
           "info": "Александр - разработчик, разработка документации, разработка страницы 404."
         }
-      },
+      ],
       "schemaViewer": {
         "title": "Документация",
         "description": "Схема GraphQL предоставляет корневой тип для каждого вида операций",
@@ -149,26 +149,25 @@
         "loginP2": "Welcome back",
         "loginOutSuccess": "You are successfully logged out. We will be waiting for you again"
       },
-      "personTeam": {
-        "hellllex": {
-          "name":"hell-llex",
-          "info": "Alexander - developer, development of authentication, development of welcome page, development of authentication page, adding adaptivity, editing header animation, creating a logo."
-        },
-        "auddax": {
-          "name":"auddax",
+      "personTeam": [
+        {
+          "name": "auddax",
           "info": "Kirill - team leader, team organization and project architecture development, main page development with code editor."
         },
-        "shalick": {
-          "name":"shalick",
+        {
+          "name": "hell-llex",
+          "info": "Alexander - developer, development of authentication, development of welcome page, development of authentication page, adding adaptivity, editing header animation, creating a logo."
+        },
+        {
+          "name": "shalick",
           "info": "Alexander - developer, documentation development, 404 page development."
         }
-      },
+      ],
       "schemaViewer": {
         "title": "Docs",
         "description": "A GraphQL schema provides a root type for each kind of operation",
         "subtitle": "Root types:"
       }
-
     }
   }
 }
