@@ -94,6 +94,14 @@
         "title": "Документация",
         "description": "Схема GraphQL предоставляет корневой тип для каждого вида операций",
         "subtitle": "Корневые типы:"
+      },
+      "footerNames": {
+        "firstName": "Кирилл",
+        "firstSurname": "Коновалов",
+        "secondName": "Александр",
+        "secondSurname": "Демещенко",
+        "thirdName": "Александр",
+        "thirdSurname": "Шабанович"
       }
     },
     "en": {
@@ -167,6 +175,14 @@
         "title": "Docs",
         "description": "A GraphQL schema provides a root type for each kind of operation",
         "subtitle": "Root types:"
+      },
+      "footerNames": {
+        "firstName": "Kirill",
+        "firstSurname": "Konovalov",
+        "secondName": "Alexander",
+        "secondSurname": "Demeshchenko",
+        "thirdName": "Aliaksandr",
+        "thirdSurname": "Shabanovich"
       }
     }
   }
