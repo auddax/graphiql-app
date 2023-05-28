@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import RootStoreModel from './rootStore';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { IUserStore, MessageInfo, SuccessUser, UserDataReg, typeMessage } from '../types';
 import { auth } from '../firebase';
 
@@ -18,6 +18,8 @@ class AuthStore {
     this.showLoginPage = true;
     this.user = {
       email: '',
+      id: '',
+      token: '',
     };
     this.messageInfo = {
       isReady: false,
@@ -31,8 +33,10 @@ class AuthStore {
     return signInWithEmailAndPassword(auth, oldUser.email, oldUser.password)
       .then(async (userCredential) => {
         const user = userCredential.user;
+        this.user.id = user?.uid;
+        this.user.token = user?.refreshToken;
         this.toggleLogin(true);
-        this.user = { email: oldUser.email }
+        this.user.email = oldUser.email;
         return true;
       })
       .catch((error) => {
@@ -46,8 +50,11 @@ class AuthStore {
   setUser(newUser: UserDataReg) {
     return createUserWithEmailAndPassword(auth, newUser.email, newUser.password)
       .then((userCredential) => {
+        const user = userCredential.user;
         this.toggleLogin(true);
-        this.user = { email: newUser.email }
+        this.user.id = user?.uid;
+        this.user.token = user?.refreshToken;
+        this.user.email = newUser.email;
         return true;
       })
       .catch((error) => {
@@ -62,7 +69,7 @@ class AuthStore {
     return signOut(auth)
       .then(() => {
       this.toggleLogin(false);
-      this.user.email = '';
+      this.clearUser();
       return true;
     })
       .catch((error) => {
@@ -70,6 +77,22 @@ class AuthStore {
         return false;
     })
       .finally(() => this.isReady(true));
+  }
+
+  onAuthState() {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        this.user.id = user?.uid;
+        this.user.token = user?.refreshToken;
+        this.user.email = user?.email ?? '';
+      }
+      });
+  }
+
+  clearUser() {
+    this.user.email = '';
+    this.user.token = '';
+    this.user.id = '';
   }
 
   toggleLoader(change: boolean) {
