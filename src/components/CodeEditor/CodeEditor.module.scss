@@ -1,0 +1,30 @@
+.code-editor {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 1.25rem 0.5rem 0.5rem 0.5rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+  0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 1.25rem;
+
+  .row-code-editor {
+    height: 100%;
+
+    .col-code-editor {
+      display: flex;
+      height: 100%;
+      justify-content: right;
+      background-color: #fff;
+    }
+  }
+  .row-params-editor {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: 10;
+  }
+}

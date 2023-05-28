@@ -1,0 +1,13 @@
+.code-playground {
+  height: 100%;
+
+  .playground-editor {
+    display: flex;
+    height: 80vh;
+    padding: 0.5rem;
+  }
+  .playground-viewer {
+    height: 80vh;
+    padding: 0.5rem;
+  }
+}

@@ -1,0 +1,189 @@
+{
+  "api": {
+    "baseUrl": "https://rickandmortyapi.com/graphql",
+    "introspection": {
+      "schema": {
+        "queryTypes": "{ __schema { queryType { fields { name description type { name } args { name } } } } }"
+      }
+    },
+    "placeholders": {
+      "query": "query AllCharacters($page: Int) {\n  characters(page: $page) {\n    results {\n      name\n    }\n  }\n}",
+      "variables": "{\n  \"page\": 1\n}",
+      "headers": "{\n  \"Content-Type\": \"application/json\"\n}"
+    }
+  },
+  "monacoEditor": {
+    "options": {
+      "minimap": { "enabled": false },
+      "scrollBeyondLastLine": false,
+      "renderLineHighlight": "none",
+      "scrollbar": {
+        "verticalScrollbarSize": 0
+      }
+    }
+  },
+  "locale": {
+    "ru": {
+      "buttons": {
+        "signin": "Войти",
+        "signup": "Зарегистрироваться",
+        "mainPage": "Перейти на главную",
+        "signout": "Выйти"
+      },
+      "login": {
+        "loginBtn": "Войти",
+        "email": "Электронная почта",
+        "emailRuleMessageFormat": "Электронная почта введена неверно!",
+        "emailRuleMessageReq": "Пожалуйста, введите свой адрес электронной почты!",
+        "password": "Пароль",
+        "passwordError": "Пожалуйста, введите ваш действительный пароль!",
+        "passwordMessage": "Пожалуйста, введите ваш пароль!"
+      },
+      "signup": {
+        "registerBtn": "Зарегистрироваться",
+        "email": "Электронная почта",
+        "emailRuleMessageFormat": "Электронная почта введена неверно!",
+        "emailRuleMessageReq": "Пожалуйста, введите свой адрес электронной почты!",
+        "password": "Пароль",
+        "passwordError": "Пожалуйста, введите ваш действительный пароль!",
+        "passwordMessage": "Пожалуйста, введите ваш пароль!",
+        "passwordTooltip": "Пароль должен состоять как минимум из 8 символов, одной цифры, одной буквы и одного специального символа.",
+        "confirmPassword": "Подтвердите пароль",
+        "confirmPasswordError": "Введенные пароли не совпадают!",
+        "confirmPasswordMessage": "Пожалуйста, подтвердите введенный пароль!",
+        "confirm": "Я соласен на обработку своих персональных данных",
+        "confirmError": "Для завершения регистрации необходимо дать согласие на обработку персональных данных!"
+      },
+      "welcomePage": {
+        "title": "Добро пожаловать на GraphQL созданный студентами курса RSSchool React 2023 Q1.",
+        "authStart": "Нажмите сюда ",
+        "authEnd": "или сюда чтобы ",
+        "titleAbout": "Команда разработчиков"
+      },
+      "authPage": {
+        "title": "Привет!",
+        "subtitle": "Чтобы начать пользоваться, пожалуйста, зарегистрируйтесь в системе, используя вашу электронную почту и пароль.",
+        "titleAuth": "С возвращением!",
+        "subtitleAuth": "Введите свою электронную почту и пароль, чтобы продолжить.",
+        "registerBtn": "Зарегистрироваться",
+        "signinBtn": "Войти",
+        "titleMobile": "Нажмите сюда, чтобы"
+      },
+      "message": {
+        "registerP1": "Вы успешно зарегистрировались",
+        "registerP2": "Добро пожаловать",
+        "loginP1": "Вы успешно вошли в систему",
+        "loginP2": "С возвращением",
+        "loginOutSuccess": "Вы успешно вышли из системы. Будем ждать вас снова"
+      },
+      "personTeam": [
+        {
+          "name": "auddax",
+          "info": "Кирилл - тимлид, организация работы команды и разработка архитектуры проекта, разработка главной страницы с редактором кода."
+        },
+        {
+          "name": "hell-llex",
+          "info": "Александр - разработчик, разработка аутентификации, разработка страницы приветствия, разработка страницы аутентификация, добавление адаптивности, редактирование анимации хедера, создание логотипа."
+        },
+        {
+          "name": "shalick",
+          "info": "Александр - разработчик, разработка документации, разработка страницы 404."
+        }
+      ],
+      "schemaViewer": {
+        "title": "Документация",
+        "description": "Схема GraphQL предоставляет корневой тип для каждого вида операций",
+        "subtitle": "Корневые типы:"
+      },
+      "footerNames": {
+        "firstName": "Кирилл",
+        "firstSurname": "Коновалов",
+        "secondName": "Александр",
+        "secondSurname": "Демещенко",
+        "thirdName": "Александр",
+        "thirdSurname": "Шабанович"
+      }
+    },
+    "en": {
+      "buttons": {
+        "signin": "Sign In",
+        "signup": "Sign Up",
+        "mainPage": "Go to Main",
+        "signout": "Sign Out"
+      },
+      "login": {
+        "loginBtn": "Sign In",
+        "email": "E-mail",
+        "emailRuleMessageFormat": "The input is not valid E-mail!",
+        "emailRuleMessageReq": "Please enter your E-mail!",
+        "password": "Password",
+        "passwordError": "Please input your valid password!",
+        "passwordMessage": "Please enter your password!"
+      },
+      "signup": {
+        "registerBtn": "Sign Up",
+        "email": "E-mail",
+        "emailRuleMessageFormat": "The input is not valid E-mail!",
+        "emailRuleMessageReq": "Please enter your E-mail!",
+        "password": "Password",
+        "passwordError": "Please input your valid password!",
+        "passwordMessage": "Please enter your password!",
+        "passwordTooltip": "The password must consist of at least 8 characters, one digit, one letter and one special character.",
+        "confirmPassword": "Confirm password",
+        "confirmPasswordError": "The two passwords that you entered do not match!",
+        "confirmPasswordMessage": "Please confirm your password!",
+        "confirm": "I agree to the processing of my personal data",
+        "confirmError": "To register, you should give consent!"
+      },
+      "welcomePage": {
+        "title": "Welcome to GraphQL created by RSSchool React 2023 Q1 students.",
+        "authStart": "Click here to ",
+        "authEnd": "or here to ",
+        "titleAbout": "Development team"
+      },
+      "authPage": {
+        "title": "Hello!",
+        "subtitle": "To start using it, please register in the system using your email and password.",
+        "titleAuth": "Welcome back!",
+        "subtitleAuth": "Enter your email and password to continue.",
+        "registerBtn": "Sign Up",
+        "signinBtn": "Sign In",
+        "titleMobile": "Click here to"
+      },
+      "message": {
+        "registerP1": "You have successfully registered",
+        "registerP2": "Welcome",
+        "loginP1": "You are successfully logged in",
+        "loginP2": "Welcome back",
+        "loginOutSuccess": "You are successfully logged out. We will be waiting for you again"
+      },
+      "personTeam": [
+        {
+          "name": "auddax",
+          "info": "Kirill - team leader, team organization and project architecture development, main page development with code editor."
+        },
+        {
+          "name": "hell-llex",
+          "info": "Alexander - developer, development of authentication, development of welcome page, development of authentication page, adding adaptivity, editing header animation, creating a logo."
+        },
+        {
+          "name": "shalick",
+          "info": "Alexander - developer, documentation development, 404 page development."
+        }
+      ],
+      "schemaViewer": {
+        "title": "Docs",
+        "description": "A GraphQL schema provides a root type for each kind of operation",
+        "subtitle": "Root types:"
+      },
+      "footerNames": {
+        "firstName": "Kirill",
+        "firstSurname": "Konovalov",
+        "secondName": "Alexander",
+        "secondSurname": "Demeshchenko",
+        "thirdName": "Aliaksandr",
+        "thirdSurname": "Shabanovich"
+      }
+    }
+  }
+}
