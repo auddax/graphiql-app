@@ -16,7 +16,7 @@ interface IPaths {
   };
 }
 
-const ParamsEditor = () => {
+const ParamsEditor: React.FC = () => {
   const store = useContext(StoreContext);
   const [mode, setMode] = useState('variables');
   const [collapsed, setCollapsed] = useState(true);

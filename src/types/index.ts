@@ -19,6 +19,51 @@ export interface IUserStore {
   id?: string;
 }
 
+export interface ITypeField {
+  name: string;
+  description: string;
+  type: {
+    name: string;
+    __typename: string;
+  }
+  __typename: string;
+}
+
+export interface IType {
+  data: {
+    __type: {
+      fields: ITypeField[];
+      __typename: string;
+    }  
+  }
+}
+
+export interface IArg {
+  name: string;
+  __typename: string;
+}
+
+export interface IField {
+  name: string;
+  description: string;
+  type: {
+    name: string;
+    __typename: string;
+  }
+  args: IArg[];
+}
+
+export interface ISchema {
+  data: {
+    __schema: {
+      queryType: {
+        fields: IField[];
+      }
+    },
+    __typename: string;
+  }
+}
+
 export type SuccessUser = {
   email: string;
 }

@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
 import styles from './Footer.module.scss';
-import { Button, Popover, Space } from 'antd';
+import { Button, Popover, Space, Typography } from 'antd';
 import { StoreContext } from '../../store/StoreProvider';
 import config from '../../../config.json';
 import { observer } from 'mobx-react-lite';
+
+const { Text } = Typography;
 
 const content = (
   <Space
@@ -65,23 +67,27 @@ const Footer = () => {
           <Button href="https://github.com/shalick" title="Shalick" type="link">
             Aliaksandr<br />Shabanovich
           </Button>
-          <p>© 2023</p>
         </Space>
+        <div className={styles['content-year']}>
+          <Text>© 2023</Text>
+        </div>
         <Popover
           content={content}
           trigger="click"
           title="GraphiQL on React © 2023"
           className={styles['team-mobile']}
         >
-          <Button>{titleAbout}</Button>
+          <Button type='text'>{titleAbout}</Button>
         </Popover>
-        <a
-          className={styles.rssLink}
-          href="https://rs.school/react/"
-          target="_blank"
-          title="RS School"
-          rel="noreferrer"
-        />
+        <div className={styles['content-logo']}>
+          <a
+            className={styles.rssLink}
+            href="https://rs.school/react/"
+            target="_blank"
+            title="RS School"
+            rel="noreferrer"
+          />
+        </div>
       </div>
     </div>
   );

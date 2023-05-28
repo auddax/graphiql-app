@@ -89,6 +89,11 @@
           "name":"shalick",
           "info": "Александр - разработчик, разработка документации, разработка страницы 404."
         }
+      },
+      "schemaViewer": {
+        "title": "Документация",
+        "description": "Схема GraphQL предоставляет корневой тип для каждого вида операций",
+        "subtitle": "Корневые типы:"
       }
     },
     "en": {
@@ -157,7 +162,13 @@
           "name":"shalick",
           "info": "Alexander - developer, documentation development, 404 page development."
         }
+      },
+      "schemaViewer": {
+        "title": "Docs",
+        "description": "A GraphQL schema provides a root type for each kind of operation",
+        "subtitle": "Root types:"
       }
+
     }
   }
 }

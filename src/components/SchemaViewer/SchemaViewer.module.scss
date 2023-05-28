@@ -1,0 +1,46 @@
+.schema-viewer {
+  color: #595959;
+  height: 100%;
+
+  .subtitle {
+    color: #595959;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .bc-item {
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  .viewer-spinner {
+    height: 100%;
+    width: 100%;
+  }
+
+  .field {
+    color: #1890ff;
+  }
+
+  .type {
+    color: #faad14;
+  }
+
+  .field-link {
+    color: #1890ff;
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+
+  .type-link {
+    color: #faad14;
+    &:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+}

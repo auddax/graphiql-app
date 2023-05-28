@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import { StoreContext } from '../../store/StoreProvider';
 import { Button, Col, Layout, Row } from 'antd';
-import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { ReadFilled, ReadOutlined } from '@ant-design/icons';
 import SchemaViewer from '../SchemaViewer';
 import styles from './SideBar.module.scss';
 
@@ -11,10 +11,8 @@ const { Sider } = Layout;
 const SideBar: React.FC = () => {
   const store = useContext(StoreContext);
   const [collapsed, setCollapsed] = useState(true);
-  const response = store.schemaStore.responseData;
-  const isLoading = store.schemaStore.isLoading;
   useEffect(() => {
-    store.schemaStore.sendRequest();
+    store.schemaStore.requestSchema();
   }, []);
 
   return (
@@ -24,11 +22,12 @@ const SideBar: React.FC = () => {
       collapsible
       collapsed={collapsed}
       width={400}
+      style={{ backgroundColor: 'transparent'}}
     >
       <Row className={styles['side-bar']}>
         <Col className={styles['side-bar-controls']} span={4}>
-          <Button onClick={() => setCollapsed(!collapsed)} >
-            {collapsed ? <MenuFoldOutlined /> : <MenuUnfoldOutlined />}
+          <Button onClick={() => setCollapsed(!collapsed)} type='text' >
+            {collapsed ? <ReadOutlined style={{ fontSize: '1.5rem', color: '#595959'}} /> : <ReadFilled style={{ fontSize: '1.5rem', color: '#595959'}} />}
           </Button>
         </Col>
         <Col className={styles['side-bar-viewer']} span={20}>
