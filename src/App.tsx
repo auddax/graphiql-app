@@ -25,7 +25,7 @@ const App = observer(() => {
         <Route
           path="/main"
           element={
-            <CheckingAuth userAccess={true} otherPath={'/welcome'}>
+            <CheckingAuth userAccess={true} otherPath={'/auth'}>
               <MainPage />
             </CheckingAuth>
           }
@@ -50,7 +50,7 @@ const App = observer(() => {
         <Route
           path="/404"
           element={
-            <CheckingAuth>
+            <CheckingAuth otherPath={'404'}>
               <NotFoundPage />
             </CheckingAuth>
           }

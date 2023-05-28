@@ -18,6 +18,10 @@ const CheckingAuth = ({
   const [user, loading, error] = useAuthState(auth);
 
   useEffect(() => {
+    store.authStore.onAuthState();
+  }, []);
+
+  useEffect(() => {
     if (loading) {
       store.authStore.toggleLoader(true);
       return;
@@ -28,7 +32,19 @@ const CheckingAuth = ({
 
   if (loading) return null;
 
-  if (otherPath && !!user === !userAccess) return <Navigate to={`${otherPath}`} />;
+  if (otherPath === '404') {
+    if (store.authStore.user.token && !user) {
+      return <Navigate to={'/welcome'} />;
+    }
+  }
+
+  if (otherPath && !!user === !userAccess && otherPath !== '404')
+    if (store.authStore.user.token && !user) {
+      store.authStore.clearUser();
+      return <Navigate to={'/welcome'} />;
+    } else {
+      return <Navigate to={`${otherPath}`} />;
+    }
 
   return children;
 };

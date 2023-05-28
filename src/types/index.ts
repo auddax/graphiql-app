@@ -66,6 +66,8 @@ export interface ISchema {
 
 export type SuccessUser = {
   email: string;
+  id: string;
+  token: string;
 }
 
 export type typeMessage = 'success' | 'error' | 'loading';
