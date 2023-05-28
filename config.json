@@ -90,6 +90,11 @@
           "info": "Александр - разработчик, разработка документации, разработка страницы 404."
         }
       },
+      "schemaViewer": {
+        "title": "Документация",
+        "description": "Схема GraphQL предоставляет корневой тип для каждого вида операций",
+        "subtitle": "Корневые типы:"
+      },
       "footerNames": {
         "firstName": "Кирилл",
         "firstSurname": "Коновалов",
@@ -97,11 +102,6 @@
         "secondSurname": "Демещенко",
         "thirdName": "Александр",
         "thirdSurname": "Шабанович"
-      },
-      "schemaViewer": {
-        "title": "Документация",
-        "description": "Схема GraphQL предоставляет корневой тип для каждого вида операций",
-        "subtitle": "Корневые типы:"
       }
     },
     "en": {
@@ -171,6 +171,11 @@
           "info": "Alexander - developer, documentation development, 404 page development."
         }
       },
+      "schemaViewer": {
+        "title": "Docs",
+        "description": "A GraphQL schema provides a root type for each kind of operation",
+        "subtitle": "Root types:"
+      },
       "footerNames": {
         "firstName": "Kirill",
         "firstSurname": "Konovalov",
@@ -178,11 +183,6 @@
         "secondSurname": "Demeshchenko",
         "thirdName": "Aliaksandr",
         "thirdSurname": "Shabanovich"
-      },
-      "schemaViewer": {
-        "title": "Docs",
-        "description": "A GraphQL schema provides a root type for each kind of operation",
-        "subtitle": "Root types:"
       }
     }
   }
