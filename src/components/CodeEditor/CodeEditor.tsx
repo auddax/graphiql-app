@@ -25,7 +25,7 @@ const CodeEditor: React.FC = () => {
   return (
     <div className={styles['code-editor']}>
       <Row className={styles['row-code-editor']}>
-        <Col className={styles['col-code-editor']} sm={20}>
+        <Col className={styles['col-code-editor']} span={20}>
           <Editor 
             height="100%"
             language="graphql"
@@ -35,7 +35,7 @@ const CodeEditor: React.FC = () => {
             options={options}
           />
         </Col>
-        <Col className={styles['col-code-editor']} sm={4}>
+        <Col className={styles['col-code-editor']} span={4}>
           <Button 
             type="primary" 
             onClick={handleRequest} 

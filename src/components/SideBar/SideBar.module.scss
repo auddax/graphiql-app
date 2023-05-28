@@ -1,5 +1,6 @@
 .side-bar {
-  height: 100%;
+  height: 80vh;
+  overflow: scroll;
   padding: 0.5rem 1rem 0.5rem 1rem;
 
   .side-bar-controls {
@@ -9,8 +10,6 @@
   }
 
   .side-bar-viewer {
-    height: 100%;
-    overflow: scroll;
     position: relative;
     z-index: 0;
   }

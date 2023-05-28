@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Suspense, useContext } from 'react';
 import { StoreContext } from '../../store/StoreProvider';
 import { Breadcrumb, Col, Row, Spin, Typography } from 'antd';
 import { observer } from 'mobx-react-lite';
@@ -9,7 +9,6 @@ const { Title, Text, Paragraph } = Typography;
 
 const SchemaViewerType =() => {
   const store = useContext(StoreContext);
-  const isLoading = store.schemaStore.isLoading;
   const fields = store.schemaStore.getTypes;
   const title = store.schemaStore.getSchemaTypeName;
 
@@ -36,7 +35,7 @@ const SchemaViewerType =() => {
       <Paragraph className={styles['subtitle']}>
         <InfoCircleOutlined />&nbsp;Fields:
       </Paragraph>
-      <Spin spinning={isLoading} wrapperClassName={styles['viewer-spinner']}>
+      <Suspense fallback={<Spin />}>
         {fields && fields.length > 0 && fields.map(field => (
           <Row key={field.name}>
             <Col>
@@ -46,7 +45,7 @@ const SchemaViewerType =() => {
             </Col>
           </Row>
         ))}
-      </Spin>
+      </Suspense>
     </Col>
   );
 };
