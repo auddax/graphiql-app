@@ -78,4 +78,4 @@ export type MessageInfo = {
   content: string;
 }
 
-export type Person = { person: 'hell-llex' | 'auddax' | 'shalick' };
+export type Person = 'hell-llex' | 'auddax' | 'shalick' ;
